@@ -1466,7 +1466,7 @@ img.image-missing {
   align-items: center;
   justify-content: center;
   background-color: rgba(0, 0, 0, .95);
-  z-index: 100;
+  z-index: 10000000;
   color: #fff;
   transform-origin: center;
   transition: transform 0.5s ease-in-out;

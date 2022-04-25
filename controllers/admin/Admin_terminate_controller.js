@@ -207,13 +207,9 @@ app.post("/admin/terminate-edit/:id", SessionService.verifySessionMiddleware(rol
 
 app.get("/admin/api/terminate", async function (req, res, next) {
     try{
-        const data = await db.terminate.findOne({ 
-            where: {
-                id: 1
-            }
-        })
+        const data = await db.terminate.findAll()
     
-        res.status(200).json(data);
+        res.status(200).json(data[0]);
     } catch (error) {
         return res.status(500).json({ error: error})
     }
