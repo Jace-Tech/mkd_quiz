@@ -851,7 +851,7 @@ input::-ms-input-placeholder {
 
   /* My style */
   position: absolute;
-  top: 66%;
+  top: 72%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
