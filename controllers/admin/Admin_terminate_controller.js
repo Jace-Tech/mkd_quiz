@@ -248,11 +248,18 @@ app.get("/admin/terminate-edit/:id", SessionService.verifySessionMiddleware(role
     }
 });
 
-app.delete("/admin/terminate-delete", SessionService.verifySessionMiddleware(role, "admin"), async function (req, res, next) {
-    const { id } = req.params
+app.get("/admin/terminate-delete/:id", SessionService.verifySessionMiddleware(role, "admin"), async function (req, res, next) {
+    const id = req.params.id
 
     try {
-        await db.terminate.deleteOne({
+        const exists = await db.terminate.findOne({where: { id } });
+
+        if (!exists) {
+            req.flash("error", "Quiz not found");
+            return res.redirect("/admin/terminate");
+        }
+
+        await db.terminate.destroy({
             where: { id }
         })
 
@@ -264,8 +271,8 @@ app.delete("/admin/terminate-delete", SessionService.verifySessionMiddleware(rol
         res.render("admin/Terminate", viewModel)
 
     } catch (err) {
-        console.error(error);
-        viewModel.error = error.message || "Something went wrong";
+        console.error(err);
+        viewModel.error = err.message || "Something went wrong";
         return res.render("admin/Terminate", viewModel)
     }
 })
