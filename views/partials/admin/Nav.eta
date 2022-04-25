@@ -7,6 +7,7 @@
   <ul class="list-unstyled components">
     <li><a href="/admin/dashboard" class="menu-item <%= it._base_url === '/admin/dashboard' ? 'menu-active':''%>">Dashboard</a></li>
     <li><a href="/admin/users/0" class="menu-item <%= it._base_url === '/admin/users' ? 'menu-active':''%>">Users</a></li>
+    <li><a href="/admin/terminate/" class="menu-item <%= it._base_url === '/admin/terminate' ? 'menu-active':''%>">Termination</a></li>
     <li><a href="/admin/orders/0" class="menu-item <%= it._base_url === '/admin/orders' ? 'menu-active':''%>">Orders</a></li>
     <li><a href="/admin/quizzes/0" class="menu-item <%= it._base_url === '/admin/quizzes' ? 'menu-active':''%>">Quizzes</a></li>
     <li><a href="/admin/questions/0" class="menu-item <%= it._base_url === '/admin/questions' ? 'menu-active':''%>">Questions</a></li>

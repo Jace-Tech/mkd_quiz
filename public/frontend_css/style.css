@@ -1453,3 +1453,48 @@ img.image-missing {
   display: none;
   border-left: none;
 }
+
+
+/* FADED MESSAGE */
+.fadedMessage {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, .95);
+  z-index: 100;
+  color: #fff;
+  transform-origin: center;
+  transition: transform 0.5s ease-in-out;
+  transform: scaleX(0);
+  padding: clamp(1rem, 3rem, 5rem);
+  text-align: center;
+}
+
+.fadedMessage.show {
+  transform: scaleX(1);
+}
+
+.message {
+  font-size: .9rem;
+  font-family: Necto Mono;
+}
+
+.subText {
+  margin: 2rem 0;
+  font-size: 2rem;
+  font-family: Bradford LL;
+  font-style: italic;
+  font-weight: 600;
+}
+
+.quizTimer {
+  font-size: 2rem;
+  font-family: Bradford LL;
+  font-style: italic;
+  font-weight: 600;
+}

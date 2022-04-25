@@ -1,0 +1,41 @@
+
+
+<% if(it.layout_clean_mode) {%>
+<% layout("../layouts/admin/Clean") %>
+<% } else {%>
+<% layout("../layouts/admin/Main") %>
+<%}%>
+
+
+
+<%~ includeFile("../partials/admin/Breadcrumb", it)%>
+
+
+<div class="tab-content mx-4 my-4">
+    <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+            <%~ includeFile("../partials/admin/GlobalResponse.eta", it) %>
+                <div class="form-container card p-4">
+                    <h5 class="primaryHeading2 mb-4 text-md-left pl-3">
+                        <%= it.heading %>
+                    </h5>
+                    <form action="/admin/terminate-add" method="POST" >
+                        <div class="form-group required col-md-5 col-sm-12 ">
+                            <label for="name" class="control-label">Message</label>
+                            <textarea required class="form-control data-input" id="text_message" name="message" value="<%= it.form_fields['message'] %>"></textarea>
+                        </div>
+
+                        <div class="form-group  col-md-5 col-sm-12 ">
+                            <label for="description" class="control-label">Counter</label>
+                            <input type="number"  class="form-control data-input" id="text_counter" name="counter" value="<%= it.form_fields['counter'] %>"/>
+                        </div>
+
+    
+                        <div class="form-group pl-3">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </form>
+            </div>
+        </div>
+    </div>
+</div>

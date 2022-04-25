@@ -1855,6 +1855,30 @@ function checkAllergie(event) {
     if(values.includes(value)) teminateQuiz()
 }
 
-function teminateQuiz () {
-    console.log("Teminate Quiz")
+async function teminateQuiz () {
+    const request = await fetch("http://127.0.0.1:3001/admin/api/terminate")
+    const response = await request.json() 
+
+    if(response?.id) {
+        const fadedMessageBox = document.querySelector(".fadedMessage")
+        fadedMessageBox.classList.add("show")
+        fadedMessageBox.querySelector("[data-message]").innerHTML = response.message
+        fadedMessageBox.querySelector("[data-timer]").innerHTML = response.counter
+
+        setCountDown(fadedMessageBox.querySelector("[data-timer]"), response.counter)
+    }
+    else {
+        console.log("Something went wrong")
+    }
+}
+
+function setCountDown(element, counter) {
+    const interval = setInterval(() => {
+        counter--
+        element.innerHTML = counter
+        if(counter === 0) {
+            clearInterval(interval)
+            location.href = "/"
+        }
+    }, 1000)
 }
