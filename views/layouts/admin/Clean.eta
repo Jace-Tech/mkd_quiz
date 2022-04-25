@@ -1,0 +1,6 @@
+<%~ includeFile("../../partials/admin/Header",it)%>
+        <div class="wrapper container-fluid p-0">
+            <%~ it.body %>
+        </div>
+    </body>
+</html>

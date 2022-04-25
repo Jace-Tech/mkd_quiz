@@ -1,0 +1,451 @@
+scalar Date 
+
+
+     type User {
+     id: ID!
+     role_id: Int
+    profile_id: Int
+    organization_id: Int
+    first_name: String
+    last_name: String
+    phone: String
+    image: String
+    refer: String
+    stripe_uid: String
+    paypal_uid: String
+    expire_at: Date
+    status: Int
+    created_at: Date
+    updated_at: Date
+     
+
+     profile: Profile
+   organization: Organization
+     }
+     
+
+     type ActivityLog {
+     id: ID!
+     name: String
+    action: String
+    data: String
+    created_at: Date
+    updated_at: Date
+     
+
+     
+     }
+     
+
+     type ReferLog {
+     id: ID!
+     user_id: Int
+    referrer_user_id: Int
+    type: Int
+    created_at: Date
+    updated_at: Date
+     
+
+     user: User
+     }
+     
+
+     type Credential {
+     id: ID!
+     oauth: String
+    email: String
+    password: String
+    user_id: Int
+    type: Int
+    verify: Int
+    status: Int
+    two_factor_authentication: Int
+    force_password_change: String
+    created_at: Date
+    updated_at: Date
+     
+
+     user: User
+     }
+     
+
+     type Image {
+     id: ID!
+     url: String
+    caption: String
+    user_id: Int
+    width: Int
+    height: Int
+    mobile_width: Int
+    mobile_height: Int
+    upload_type: Int
+    created_at: Date
+    updated_at: Date
+     
+
+     user: User
+     }
+     
+
+     type Rule {
+     id: ID!
+     output_variable_name: String
+    actives: String
+    operator: Int
+    compare_value: Float
+    min: Float
+    max: Float
+    action: Int
+    created_at: Date
+    updated_at: Date
+     
+
+     
+     }
+     
+
+     type Quiz {
+     id: ID!
+     name: String
+    description: String
+    created_at: Date
+    updated_at: Date
+     
+
+     
+     }
+     
+
+     type Active {
+     id: ID!
+     name: String
+    created_at: Date
+    updated_at: Date
+     
+
+     
+     }
+     
+
+     type OutputVariable {
+     id: ID!
+     name: String
+    active_list: String
+    ranges_response: String
+    created_at: Date
+    updated_at: Date
+     
+
+     
+     }
+     
+
+     type Question {
+     id: ID!
+     quiz_id: Int
+    question: String
+    question_arguments: String
+    note: String
+    note_type: Int
+    target: Int
+    response: String
+    save_response_into: String
+    depends_on: String
+    slider_range: String
+    output_variable_name: String
+    weight: Float
+    extra_output_variable: String
+    type: Int
+    created_at: Date
+    updated_at: Date
+     
+
+     quiz: Quiz
+     }
+     
+
+     type Answer {
+     id: ID!
+     question_id: Int
+    answer: String
+    answer_value: Float
+    explaination: String
+    image_id: String
+    response_header: String
+    response_body: String
+    response_arguments: String
+    black_list_actives: String
+    created_at: Date
+    updated_at: Date
+     
+
+     question: Question
+     }
+     
+     # ------------------------ PAGINATION ------------------------
+     
+     # USER
+     type UserEdge {
+       cursor: String
+       node: User
+     }
+     
+     type Users {
+       edges: [UserEdge]
+       pageInfo: PageInfo
+     }
+
+
+     # ACTIVITY_LOG
+     type ActivityLogEdge {
+       cursor: String
+       node: ActivityLog
+     }
+     
+     type ActivityLogs {
+       edges: [ActivityLogEdge]
+       pageInfo: PageInfo
+     }
+
+
+     # REFER_LOG
+     type ReferLogEdge {
+       cursor: String
+       node: ReferLog
+     }
+     
+     type ReferLogs {
+       edges: [ReferLogEdge]
+       pageInfo: PageInfo
+     }
+
+
+     # CREDENTIAL
+     type CredentialEdge {
+       cursor: String
+       node: Credential
+     }
+     
+     type Credentials {
+       edges: [CredentialEdge]
+       pageInfo: PageInfo
+     }
+
+
+     # IMAGE
+     type ImageEdge {
+       cursor: String
+       node: Image
+     }
+     
+     type Images {
+       edges: [ImageEdge]
+       pageInfo: PageInfo
+     }
+
+
+     # RULE
+     type RuleEdge {
+       cursor: String
+       node: Rule
+     }
+     
+     type Rules {
+       edges: [RuleEdge]
+       pageInfo: PageInfo
+     }
+
+
+     # QUIZ
+     type QuizEdge {
+       cursor: String
+       node: Quiz
+     }
+     
+     type Quizs {
+       edges: [QuizEdge]
+       pageInfo: PageInfo
+     }
+
+
+     # ACTIVE
+     type ActiveEdge {
+       cursor: String
+       node: Active
+     }
+     
+     type Actives {
+       edges: [ActiveEdge]
+       pageInfo: PageInfo
+     }
+
+
+     # OUTPUT_VARIABLE
+     type OutputVariableEdge {
+       cursor: String
+       node: OutputVariable
+     }
+     
+     type OutputVariables {
+       edges: [OutputVariableEdge]
+       pageInfo: PageInfo
+     }
+
+
+     # QUESTION
+     type QuestionEdge {
+       cursor: String
+       node: Question
+     }
+     
+     type Questions {
+       edges: [QuestionEdge]
+       pageInfo: PageInfo
+     }
+
+
+     # ANSWER
+     type AnswerEdge {
+       cursor: String
+       node: Answer
+     }
+     
+     type Answers {
+       edges: [AnswerEdge]
+       pageInfo: PageInfo
+     }
+     
+
+     type PageInfo {
+       endCursor: String
+       hasNextPage: Boolean
+     }
+     
+
+ 
+     # ------------------------ QUERY ------------------------
+     type Query {
+       
+     # USER
+     User(id: ID!): User
+     Users(first: Int, after: ID): Users
+     
+
+
+     # ACTIVITY_LOG
+     ActivityLog(id: ID!): ActivityLog
+     ActivityLogs(first: Int, after: ID): ActivityLogs
+     
+
+
+     # REFER_LOG
+     ReferLog(id: ID!): ReferLog
+     ReferLogs(first: Int, after: ID): ReferLogs
+     
+
+
+     # CREDENTIAL
+     Credential(id: ID!): Credential
+     Credentials(first: Int, after: ID): Credentials
+     
+
+
+     # IMAGE
+     Image(id: ID!): Image
+     Images(first: Int, after: ID): Images
+     
+
+
+     # RULE
+     Rule(id: ID!): Rule
+     Rules(first: Int, after: ID): Rules
+     
+
+
+     # QUIZ
+     Quiz(id: ID!): Quiz
+     Quizs(first: Int, after: ID): Quizs
+     
+
+
+     # ACTIVE
+     Active(id: ID!): Active
+     Actives(first: Int, after: ID): Actives
+     
+
+
+     # OUTPUT_VARIABLE
+     OutputVariable(id: ID!): OutputVariable
+     OutputVariables(first: Int, after: ID): OutputVariables
+     
+
+
+     # QUESTION
+     Question(id: ID!): Question
+     Questions(first: Int, after: ID): Questions
+     
+
+
+     # ANSWER
+     Answer(id: ID!): Answer
+     Answers(first: Int, after: ID): Answers
+     
+     }
+
+     # ------------------------ MUTATION ------------------------
+     type Mutation {
+       # USER
+createUser(role_id:Int,profile_id:Int,organization_id:Int,first_name:String!,last_name:String!,phone:String,image:String,refer:String,stripe_uid:String,paypal_uid:String,expire_at:Date,status:Int!): User!
+updateUser(id: ID! ,role_id:Int,profile_id:Int,organization_id:Int,first_name:String,last_name:String,phone:String,image:String,refer:String,stripe_uid:String,paypal_uid:String,expire_at:Date,status:Int): [Int!]!
+deleteUser(id: ID!): Int!
+
+# ACTIVITY_LOG
+createActivityLog(name:String): ActivityLog!
+updateActivityLog(id: ID! ,name:String): [Int!]!
+deleteActivityLog(id: ID!): Int!
+
+# REFER_LOG
+createReferLog(user_id:Int!,type:Int!): ReferLog!
+updateReferLog(id: ID! ): [Int!]!
+deleteReferLog(id: ID!): Int!
+
+# CREDENTIAL
+createCredential(email:String!,password:String!): Credential!
+updateCredential(id: ID! ,email:String!,password:String): [Int!]!
+deleteCredential(id: ID!): Int!
+
+# IMAGE
+createImage(url:String!,caption:String): Image!
+updateImage(id: ID! ,url:String!,caption:String): [Int!]!
+deleteImage(id: ID!): Int!
+
+# RULE
+createRule: Rule!
+updateRule(id: ID! ): [Int!]!
+deleteRule(id: ID!): Int!
+
+# QUIZ
+createQuiz: Quiz!
+updateQuiz(id: ID! ): [Int!]!
+deleteQuiz(id: ID!): Int!
+
+# ACTIVE
+createActive: Active!
+updateActive(id: ID! ): [Int!]!
+deleteActive(id: ID!): Int!
+
+# OUTPUT_VARIABLE
+createOutputVariable: OutputVariable!
+updateOutputVariable(id: ID! ): [Int!]!
+deleteOutputVariable(id: ID!): Int!
+
+# QUESTION
+createQuestion: Question!
+updateQuestion(id: ID! ): [Int!]!
+deleteQuestion(id: ID!): Int!
+
+# ANSWER
+createAnswer: Answer!
+updateAnswer(id: ID! ): [Int!]!
+deleteAnswer(id: ID!): Int!
+     }

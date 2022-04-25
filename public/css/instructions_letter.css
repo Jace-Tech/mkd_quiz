@@ -1,0 +1,158 @@
+* {
+  box-sizing: border-box;
+}
+@font-face {
+  font-family: "TT Nooks Script";
+  src: url("/fonts/TTNooksScript-Bold.woff2") format("woff2"), url("/fonts/TTNooksScript-Bold.woff") format("woff");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Bradford LL";
+  src: url("/fonts/BradfordLL-Regular.woff2") format("woff2"), url("/fonts/BradfordLL-Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Bradford LL";
+  src: url("/fonts/BradfordLL-Italic.woff2") format("woff2"), url("/fonts/BradfordLL-Italic.woff") format("woff");
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Necto Mono";
+  src: url("/fonts/Necto-Mono.woff2") format("woff2"), url("/fonts/Necto-Mono.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Debrovnik Hill Italic";
+  src: url("/fonts/Debrovnik Hill Italic.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Debrovnik Hill Reguler";
+  src: url("/fonts/Debrovnik Hill Reguler.ttf") format("truetype");
+}
+html {
+  height: 100%;
+}
+body {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+  flex-grow: 1;
+  -webkit-print-color-adjust: exact;
+}
+.logo-svg {
+  transform: rotate(90deg);
+  margin: 10px;
+}
+
+#instructions-letter {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  width: 100%;
+  /* max-width: 618px; */
+  margin: auto;
+  background-color: white;
+  height: 100%;
+  min-height: 100%;
+}
+#instructions-letter.print {
+  max-width: unset;
+}
+#instructions-letter .left,
+#instructions-letter .right {
+  width: max-content;
+  padding: 20px 8px;
+  font-family: "Bradford LL";
+  font-style: italic;
+  text-transform: capitalize;
+  font-size: 20px;
+  min-height: max-content;
+  text-align: center;
+}
+#instructions-letter .left {
+  transform: rotate(180deg);
+  writing-mode: vertical-lr;
+  margin-left: 6px;
+}
+#instructions-letter .right {
+  margin-right: 6px;
+  writing-mode: vertical-rl;
+}
+#instructions-letter .center {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  border: 1px solid black;
+  border-top: none;
+  border-bottom: none;
+}
+#instructions-letter .center .header {
+  font-family: "Bradford LL";
+  font-weight: 500;
+  font-size: 36px;
+  text-transform: capitalize;
+  text-align: center;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  padding: 20px 0;
+}
+#instructions-letter .section {
+  padding: 8px 10px;
+}
+#instructions-letter .section .sub-header {
+  font-family: "Bradford LL";
+  font-weight: 500;
+  margin-top: 0;
+  font-size: 28px;
+  font-style: italic;
+  text-transform: capitalize;
+  margin-bottom: 8px;
+}
+#instructions-letter .items .list {
+  list-style: none;
+  margin-top: 0;
+  padding-left: 16px;
+  font-family: "Necto Mono";
+  font-size: 15px;
+  line-height: 18px;
+}
+#instructions-letter .items .list li {
+  padding-bottom: 6px;
+}
+#instructions-letter .items .list li ul {
+  margin-top: 6px;
+  padding-left: 3rem;
+}
+
+#instructions-letter .mixing-steps .list {
+  margin-top: 0;
+  padding-left: 56px;
+  padding-right: 16px;
+  font-family: "Necto Mono";
+  font-size: 15px;
+  line-height: 18px;
+}
+#instructions-letter .mixing-steps .list li {
+  padding-bottom: 6px;
+}
+#instructions-letter .notes .list {
+  list-style: disc;
+  margin-top: 0;
+  padding-left: 48px;
+  padding-right: 16px;
+  font-family: "Necto Mono";
+  font-size: 15px;
+  line-height: 18px;
+}

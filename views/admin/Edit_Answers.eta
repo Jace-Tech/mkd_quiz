@@ -1,0 +1,142 @@
+<% if(it.layout_clean_mode) {%>
+<% layout("../layouts/admin/Clean") %>
+<% } else {%>
+<% layout("../layouts/admin/Main") %>
+<%}%>
+<style>
+
+
+</style>
+<%~ includeFile("../partials/admin/Breadcrumb", it)%>
+
+<div class="tab-content mx-4 my-4">
+  <div class="row">
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+      <%~ includeFile("../partials/admin/GlobalResponse.eta", it) %>
+      <div class="form-container card p-4">
+        <h5 class="primaryHeading2 mb-4 text-md-left pl-3">
+          <%= it.heading %>
+        </h5>
+
+        <form action="/admin/answers-edit/<%= it.answer['id'] %>" method="POST">
+
+
+          <div class="form-group required col-md-5 col-sm-12 ">
+            <label for="question_id" class="control-label">Question</label>
+            <small class="text-muted">Can select one</small>
+            <select class="selectpicker custom-picker d-block w-100" data-style="btn-light" data-live-search="true" id="select-question_id" name="question_id" required>
+              <% it.questions.forEach(function(ques) { %>
+              <option class="select_mapping_status_option" value="<%= ques.id %>" data-type="<%= ques.type %>" <%= it.answer['question_id'] == ques.id ? 'selected':'' %>>
+                <%= ques.question %>
+              </option>
+              <% }) %>
+            </select>
+          </div>
+
+          <div class="form-group required col-md-5 col-sm-12 ">
+            <label for="answer" class="control-label">Answer</label>
+
+
+            <input type="text" required class="form-control data-input" id="text_answer" name="answer" value="<%= it.answer['answer'] %>" />
+
+
+          </div>
+
+          <div class="form-group  col-md-5 col-sm-12 <%= [4,5].includes(it.question['type']) ? 'show' : '' %>" id="answer-value">
+            <label for="answer_value" class="control-label">Answer value</label>
+
+
+            <input id="integer_answer_value" name="answer_value" value="<%= it.answer['answer_value'] %>" class="form-control" type="number" step="any" pattern="d+" inputmode="numeric" />
+
+
+          </div>
+          <div class="form-group col-md-5 col-sm-12 <%= it.question['type'] == 6 ? 'show' : '' %>" id="hide-answer-select">
+            <label for="hide_answer" class="control-label">Hide answer label</label>
+            <small class="text-muted">Can select one</small>
+            <select class="selectpicker custom-picker d-block w-100" data-style="btn-light" data-live-search="true" id="bool_hide_answer" name="hide_answer">
+              <option value="0" <%= it.answer['hide_answer'] == 0 ? 'selected' : '' %>>No</option>
+              <option value="1" <%= it.answer['hide_answer'] == 1 ? 'selected' : '' %>>Yes</option>
+            </select>
+          </div>
+
+
+          <div class="form-group required col-md-5 col-sm-12 ">
+            <label for="order" class="control-label">Order</label>
+
+
+            <input type="number" required class="form-control data-input" id="number_order" name="order" value="<%= it.answer['order'] %>" step="1" min="1" />
+
+
+          </div>
+
+          <div class="form-group  col-md-5 col-sm-12 ">
+            <label for="explaination" class="control-label">Explanation</label>
+
+
+            <input type="text" class="form-control data-input" id="text_explaination" name="explaination" value="<%= it.answer['explaination'] ?? '' %>" />
+
+
+          </div>
+
+          <div class="form-group  col-md-5 col-sm-12 <%= [5,6].includes(it.question.type) ? 'show':'' %>" id="answer-image">
+            <label for="image_id" class="control-label">Image</label>
+
+
+            <img id="media_image_id" src="<%= it.answer.image?.url %>" class="mb-3" style="width:auto; height:200px; object-fit:contain; background:#00000010; border-radius:8px" />
+
+            <button id="button_file_image_id" type="button" class="btn btn-outline-primary btn-block mkd-uppload-image-button data-input" data-upload-for="image_id">Upload</button>
+            <input id="file_image_id" name="image_id" type="text" hidden value="<%= it.answer.image?.id %>" class="form-control-file">
+
+
+          </div>
+
+          <div class="form-group  col-md-5 col-sm-12 ">
+            <label for="response_header" class="control-label">Response header</label>
+
+
+            <input type="text" class="form-control data-input" id="text_response_header" name="response_header" value="<%= it.answer['response_header'] ?? '' %>" />
+
+
+          </div>
+
+          <div class="form-group  col-md-5 col-sm-12 ">
+            <label for="response_body" class="control-label">Response body</label>
+
+
+            <input type="text" class="form-control data-input" id="text_response_body" name="response_body" value="<%= it.answer['response_body'] ?? '' %>" />
+
+
+          </div>
+
+
+          <div class="form-group  col-md-5 col-sm-12 ">
+            <label for="black_list_actives" class="control-label">Black listed actives</label>
+
+            <% blActivesList = [];
+        if(it.answer['black_list_actives']){
+          blActivesList= JSON.parse(it.answer['black_list_actives'])
+        }
+      %>
+            <small class="text-muted">Can select multiple</small>
+            <select class="selectpicker custom-picker d-block w-100" data-style="btn-light" data-live-search="true" id="text_black_list_actives" name="black_list_actives" required multiple>
+              <% it.actives.forEach(function(active) { %>
+              <option class="select_mapping_status_option" value="<%= active.name %>" <%= blActivesList.includes(active.name) ? 'selected': '' %>>
+                <%= active.name %>
+              </option>
+              <% }) %>
+            </select>
+          </div>
+
+
+          <div class="form-group pl-3">
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/js/add-answer.js">
+</script>

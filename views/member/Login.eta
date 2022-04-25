@@ -1,0 +1,88 @@
+
+<% layout("../layouts/member/Clean") %>
+
+
+<section>
+    <div class="row">
+        <div class="col-lg-3 col-md-3 col-sm-1 col-xs-1"></div>
+            <div class="col-lg-6 col-md-6 col-sm-10 col-xs-10 p-5 auth-wrap">
+                <div class='text-center'>
+                    <h1>Login</h1>
+                </div>
+                <div class="form-container form-container-auth">
+                    <%~ includeFile("../partials/admin/GlobalResponse.eta", it) %>
+                    <form action="/member/login" method="POST">
+                        <div class="form-group required">
+                            <label class='control-label' for="email">Email</label>
+                            <input type="email" required class="form-control site-input" id="email" name="email"  required="true" value="<%= it.login_fields.email%>" />
+                            <% if(it.validationError){ %>
+                                <% if(it.validationError.email){ %>
+                                    <div class="alert alert-danger my-4" role="alert">
+                                        <%= it.validationError.email  %>
+                                    </div>
+                                <%}%>
+                            <%}%>
+                        </div>
+                        <div class="form-group required text-container">
+                            <label class='control-label' for="password">Password</label>
+                            <input type="password" required class="form-control site-input" id="password" name="password"  required="true" >
+                            <% if(it.validationError){ %>
+                                <% if(it.validationError.password){ %>
+                                    <div class="alert alert-danger my-4" role="alert">
+                                        <%= it.validationError.password  %>
+                                    </div>
+                                <%}%>
+                            <%}%>
+                        </div>
+                        <div class="form-group mt-3 d-flex justify-content-start">
+<a href="/member/forgot" id="mkd-forgot-password-link">Forgot Password ?</a>
+</div>
+
+                        <div class="form-group">
+                        <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                        </div>
+
+                
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox"  id="remember_me" name="remember_me" >
+          <label class="form-check-label" for="remember_me">
+          Remember me
+          </label>
+       </div>
+     
+                
+<div class="text-center mt-3">
+<span> OR </span>
+</div>
+
+ <div class="form-group mt-3 ">
+        <a href="<%= it.google_auth_url%>" class="btn btn-accent-light-outline btn-sign-up google-button" >
+<i class="fab fa-google" aria-hidden="true"></i>&nbsp;
+ Login with Google</a>
+ </div>
+<div class="form-group mt-3">
+        <a href="<%= it.facebook_auth_url%>" class="btn btn-accent-light-outline btn-sign-up facebook-button" > 
+<i class="fab fa-facebook" aria-hidden="true"></i>&nbsp;
+ Login with Facebook</a>
+ </div>
+
+                    </form>
+                </div>
+
+
+                <div class="text-center ">
+<span>Don't have an account yet?
+            <a href="/member/register">Register</a>
+</span>
+</div>
+
+</div>
+</div>
+</div>
+</section>
+
+<div class='text-center'> 
+    <p>Copyright © 2021 Manaknightdigital Inc. All rights reserved.</p>
+
+    <p>Powered By <a href="https://manaknightdigital.com" target="__blank">Manaknightdigital Inc.</a></p>
+</div>

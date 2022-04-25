@@ -1,0 +1,74 @@
+
+<% if(it.layout_clean_mode) {%>
+<% layout("../layouts/admin/Clean") %>
+<% } else {%>
+<% layout("../layouts/admin/Main") %>
+<%}%>
+
+
+<%~ includeFile("../partials/admin/Breadcrumb", it)%>
+
+<div class="tab-content mx-4 my-4">
+  <div class="row">
+      <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+      <%~ includeFile("../partials/admin/GlobalResponse.eta", it) %>
+          <div class="card" style='border-bottom:1px solid #ccc;'>
+              <div class="card-body">
+                <h4 class="primaryHeading2 text-md-left">
+                  <%= it.heading %>
+                </h4>
+                <table class="table table-striped">
+                  
+                      <tr>
+                        <th>ID:</th>
+                        <td>
+                          <%= it.detail_fields["id"] %>
+                        </td>
+                      </tr>
+                  
+
+                      <tr>
+                        <th>Email:</th>
+                        <td>
+                          <%= it.detail_fields["credential.email"] %>
+                        </td>
+                      </tr>
+                      
+
+                      <tr>
+                        <th>First Name:</th>
+                        <td>
+                          <%= it.detail_fields["first_name"] %>
+                        </td>
+                      </tr>
+                  
+
+                      <tr>
+                        <th>Last Name:</th>
+                        <td>
+                          <%= it.detail_fields["last_name"] %>
+                        </td>
+                      </tr>
+                  
+
+                      <tr>
+                        <th>Role ID:</th>
+                        <td>
+                          <%= it.detail_fields["role_id"] %>
+                        </td>
+                      </tr>
+                  
+
+                      <tr>
+                        <th>Status:</th>
+                        <td>
+                          <%= it.detail_fields["status"] %>
+                        </td>
+                      </tr>
+                  
+                </table>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

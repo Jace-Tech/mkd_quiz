@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/all_letters.css?v=1.23">
+
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="/js/qrcode.js"></script>
+  <!-- <script defer>
+    $(document).ready(function() {
+      let divToPrint = document.getElementById('main-letter');
+      let printBtn = document.querySelector(".print-btn");
+      divToPrint.classList.add("print");
+
+      window.print();
+      //window.close();
+    });
+    window.onafterprint = () => {
+      window.close()
+    }
+  </script> -->
+  <title>Letters</title>
+</head>
+
+<body>
+  <div id="main-letter">
+    <div class="left">made with you. made for you. made by you. <img src="/image/CreatedBy_Icon_Black_RGB.png" class="logo-svg" width="30px" height="30px"> made with you. made for you. made by you.</div>
+    <div class="center">
+      <div class="top">
+        <div class="header-logo">
+          <span class="cr-logo">CREATED BY</span>
+          <span class="customer-name"><%= it.firstName ? `${it.firstName.trim()}` : "You" %></span>
+        </div>
+      </div>
+      <div class="middle">
+        <div class="header">Welcome to your personalized skincare journey</div>
+        <div class="body">
+          <p><%= it.firstName ? `${it.firstName.trim()}, you ` : 'You ' %>are one of a kind. we believe your skincare should be too.</p>
+          <p>A truly personalized skincare routine is based on science - not buzzwords. That's why our team of scientists, formulators and skincare experts have spent years
+            researching ingredients and analyzing data to provide the best recommendations for your skin.
+          </p>
+          <p>In this box, you'll find additional cards detailing your skin profile, formula and mixing directions to get you started.</p>
+          <p>Each formula is completely personalized using the results from your skin quiz. All that's missing to complete the product, is you.</p>
+          <p>Happy mixing!</p>
+        </div>
+        <div class="footer">
+          <h5>- The Created By ____ team</h5>
+        </div>
+      </div>
+      <div class="bottom"></div>
+    </div>
+    <div class="right">made with you. made for you. made by you. <img src="/image/CreatedBy_Icon_Black_RGB.png" class="logo-svg" width="30px" height="30px"> made with you. made for you. made by you.</div>
+  </div>
+
+  <div id="profile-letter">
+    <div class="left">made with you. made for you. made by you. <img src="/image/CreatedBy_Icon_Black_RGB.png" class="logo-svg" width="30px" height="30px"> made with you. made for you. made by you.</div>
+    <div class="center">
+      <div class="header">
+        <span class="username"><%= it.firstName ? `${it.firstName.trim()}'s` : "Your" %></span> skin profile
+      </div>
+      <div class="body">
+        <% if(it.profileCharcteristics) { %>
+        <% Object.entries(it.profileCharcteristics).forEach(([name, values])=>{%>
+        <div class="progress-container">
+          <div class="profile-title">
+            <h3><%= name %></h3>
+          </div>
+          <div class="profile-body">
+            <% if(values && values.length) { %>
+            <% values?.forEach(profile => { %>
+            <div class="profile-container">
+              <div class="title">
+                <%= profile.name %>
+              </div>
+              <div class="progress">
+                <div class="bar" style="width: <%= parseFloat(profile.percentage).toFixed(2) %>%"></div>
+              </div>
+            </div>
+            <% }) %>
+            <% }%>
+          </div>
+        </div>
+        <%})%>
+        <% }%>
+      </div>
+    </div>
+    <div class="right">made with you. made for you. made by you. <img src="/image/CreatedBy_Icon_Black_RGB.png" class="logo-svg" width="30px" height="30px"> made with you. made for you. made by you.</div>
+  </div>
+
+
+  <div id="formula-letter">
+    <div class="left">made with you. made for you. made by you. <img src="/image/CreatedBy_Icon_Black_RGB.png" class="logo-svg" width="30px" height="30px"> made with you. made for you. made by you.</div>
+    <div class="center">
+      <div class="header">
+        <span class="username"><%= it.firstName ? `${it.firstName.trim()}'s` : "Your" %></span> formula
+      </div>
+      <div class="body">
+        <div class="step _one">
+          <div class="title">Step 1: Understanding your base</div>
+          <div class="content">
+            <div class="qrcode"><canvas id="base-canvas"></canvas></div>
+            <script>
+              QRCode.toCanvas(document.getElementById("base-canvas"), "https://manaknightdigital.com/products/base", {
+                width: 90,
+                color: {
+                  dark: "#00000099"
+                }
+              }, function(error) {
+                if (error) console.error(error);
+              });
+            </script>
+            <div class="explanation">
+              Derived of water, sunflower, olive, and banana, your base is the foundation of your new skincare routine. We kept it simple and included only the essentials.
+            </div>
+          </div>
+        </div>
+        <div class="step _two">
+          <div class="title">Step 2: Sources of Your Active Ingredients*</div>
+          <div class="content">
+            <% it.actives?.forEach(active => { %>
+            <div class="active">
+              <div class="name-qrcode">
+                <span class="active-name"><%= active.name %></span>
+                <div class="qrcode"><canvas id="canvas_<%= active.id %>" width="125px" height="125px"></canvas></div>
+                <script>
+                  QRCode.toCanvas(document.getElementById("canvas_<%= active.id %>"), "<%= active.handle %>", {
+                    width: 80,
+                    color: {
+                      dark: "#00000099"
+                    }
+                  }, function(error) {
+                    if (error) console.error(error);
+                  });
+                </script>
+              </div>
+              <div class="description">
+                <%= active.description ?? "" %>
+              </div>
+            </div>
+            <% }) %>
+            <% if(it.count < 10) { %>
+            <% for(let i=it.count; i < 10; i++){ %>
+            <div class="active">
+              <div class="name-qrcode">
+                <span class="active-name">Blank</span>
+                <div class="qrcode"><canvas id="canvas_blank_<%= i %>" width="125px" height="125px"></canvas></div>
+                <script>
+                  QRCode.toCanvas(document.getElementById("canvas_blank_<%= i %>"), "https://manaknightdigital.com/products/blank", {
+                    width: 80,
+                    color: {
+                      dark: "#00000099"
+                    }
+                  }, function(error) {
+                    if (error) console.error(error);
+                  });
+                </script>
+              </div>
+              <div class="description">
+                <!-- Balances Forumula Concentration -->
+              </div>
+            </div>
+            <%}%>
+            <%}%>
+          </div>
+        </div>
+      </div>
+      <div class="footer-note">
+        *All actives contain varying amounts of same ingredients found in basecream - for full information scan the QR codes.
+      </div>
+    </div>
+    <div class="right">made with you. made for you. made by you. <img src="/image/CreatedBy_Icon_Black_RGB.png" class="logo-svg" width="30px" height="30px"> made with you. made for you. made by you.</div>
+  </div>
+
+  <div id="instructions-letter">
+    <div class="left">made with you. made for you. made by you. <img src="/image/CreatedBy_Icon_Black_RGB.png" class="logo-svg" width="30px" height="30px"> made with you. made for you. made by you.</div>
+    <div class="center">
+      <div class="header">
+        Instructions
+      </div>
+      <div class="items section">
+        <h3 class="sub-header">Items included:</h3>
+        <ul class="list">
+          <li>(1) Jar with Base Cream</li>
+          <li>
+            (1) Bag Containing:
+            <ul>
+              <li>
+                (10) Actives Sachets
+              </li>
+              <li>
+                (1) Wooden Mixing Stick
+              </li>
+              <li>
+                (1) Marker
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div class="mixing-steps section">
+        <h3 class="sub-header">Step 3: Mixing Your Formula</h3>
+        <ol class="list">
+          <li>Open your jar of base cream.</li>
+          <li>Carefully empty all 10 sachets into your base cream.</li>
+          <li>Gently mix the base and sachet contents with the wooden mixing stick until a consistent color and texture is achieved.</li>
+          <li>Optional: Customize your jar using the included marker.</li>
+        </ol>
+      </div>
+      <div class="notes section">
+        <h3 class="sub-header">* Things to make note of:</h3>
+        <ul class="list">
+          <li>Your formula may include sachets labeled "Blank." These contain supplementary base meant to balance the final volume and active concentrations.</li>
+          <li>Actives may have some varying colors or scents coming from their natural plantsources.</li>
+          <li>If cream separation occurs, simply remix gently.</li>
+          <li>Do not throw out jar when done. All future orders will arrive in a refill pod.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="right">made with you. made for you. made by you. <img src="/image/CreatedBy_Icon_Black_RGB.png" class="logo-svg" width="30px" height="30px"> made with you. made for you. made by you.</div>
+  </div>
+
+</body>
+
+</html>

@@ -1,0 +1,169 @@
+* {
+  box-sizing: border-box;
+}
+@font-face {
+  font-family: "TT Nooks Script";
+  src: url("/fonts/TTNooksScript-Bold.woff2") format("woff2"), url("/fonts/TTNooksScript-Bold.woff") format("woff");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Bradford LL";
+  src: url("/fonts/BradfordLL-Regular.woff2") format("woff2"), url("/fonts/BradfordLL-Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Bradford LL";
+  src: url("/fonts/BradfordLL-Italic.woff2") format("woff2"), url("/fonts/BradfordLL-Italic.woff") format("woff");
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Necto Mono";
+  src: url("/fonts/Necto-Mono.woff2") format("woff2"), url("/fonts/Necto-Mono.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Debrovnik Hill Italic";
+  src: url("/fonts/Debrovnik Hill Italic.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Debrovnik Hill Reguler";
+  src: url("/fonts/Debrovnik Hill Reguler.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "rotation-roman";
+  src: url("/fonts/RotationLTStd-Roman.otf") format("opentype");
+}
+
+html {
+  height: 100%;
+}
+body {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  -webkit-print-color-adjust: exact;
+}
+.logo-svg {
+  transform: rotate(90deg);
+  margin: 10px;
+}
+#profile-letter {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  width: 100%;
+  min-height: 100%;
+  /* max-width: 618px; */
+  margin: auto;
+  background-color: white;
+}
+#profile-letter.print {
+  max-width: unset;
+}
+#profile-letter .left,
+#profile-letter .right {
+  width: max-content;
+  padding: 20px 8px;
+  font-family: "Bradford LL";
+  font-style: italic;
+  text-transform: capitalize;
+  font-size: 20px;
+  height: 100%;
+  min-height: max-content;
+  text-align: center;
+}
+#profile-letter .left {
+  transform: rotate(180deg);
+  margin-left: 6px;
+  writing-mode: vertical-lr;
+}
+#profile-letter .right {
+  margin-right: 6px;
+  writing-mode: vertical-rl;
+}
+#profile-letter .center {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  border: 1px solid black;
+  border-top: none;
+  border-bottom: none;
+  min-height: 100%;
+  align-items: center;
+}
+#profile-letter .center .header {
+  font-family: "Bradford LL";
+  font-weight: 500;
+  font-size: 32px;
+  text-transform: capitalize;
+  text-align: center;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  padding: 20px 0;
+}
+#profile-letter .center .body {
+  width: 100%;
+}
+
+#profile-letter .progress-container {
+  width: 100%;
+  min-width: 100%;
+  padding: 14px 20px 20px 20px;
+  border-bottom: 1px solid black;
+}
+#profile-letter .progress-container:last-of-type {
+  border-bottom: none;
+}
+
+#profile-letter .progress-container .profile-title h3 {
+  color: #000000;
+  text-align: center;
+  font: italic 30px "Bradford LL";
+  line-height: 40px;
+  margin: 0;
+  margin-bottom: 16px;
+  font-weight: 500;
+}
+
+#profile-letter .progress-container .profile-body {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+#profile-letter .profile-container {
+  width: 45%;
+  margin: 0 0 18px 0;
+}
+#profile-letter .profile-container .title {
+  font: 16px "Necto Mono";
+  color: #231f20;
+  margin-bottom: 8px;
+  display: inline-block;
+}
+#profile-letter .profile-container .progress {
+  width: 100%;
+  height: 6px;
+  border: 1px solid black;
+  border-radius: 1px;
+  text-align: left;
+}
+#profile-letter .profile-container .progress .bar {
+  height: 100%;
+  background-color: black;
+  z-index: 9;
+}

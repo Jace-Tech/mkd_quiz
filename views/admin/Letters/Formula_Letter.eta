@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/formula_letter.css?v=1.13">
+
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="/js/qrcode.js"></script>
+  <!-- <script defer>
+    $(document).ready(function() {
+      let divToPrint = document.getElementById('formula-letter');
+      let printBtn = document.querySelector(".print-btn");
+      divToPrint.classList.add("print");
+
+      window.print();
+    });
+    window.onafterprint = () => {
+      window.close()
+    }
+  </script> -->
+  <title>Formula Letter</title>
+</head>
+
+<body>
+
+  <div id="formula-letter">
+    <div class="left">made with you. made for you. made by you. <img src="/image/CreatedBy_Icon_Black_RGB.png" class="logo-svg" width="30px" height="30px"> made with you. made for you. made by you.</div>
+    <div class="center">
+      <div class="header">
+        <span class="username"><%= it.firstName ? `${it.firstName.trim()}'s` : "Your" %></span> formula
+      </div>
+      <div class="body">
+        <div class="step _one">
+          <div class="title">Step 1: Understanding your base</div>
+          <div class="content">
+            <div class="qrcode"><canvas id="base-canvas"></canvas></div>
+            <script>
+              QRCode.toCanvas(document.getElementById("base-canvas"), "https://manaknightdigital.com/products/base", {
+                width: 90,
+                color: {
+                  dark: "#00000099"
+                }
+              }, function(error) {
+                if (error) console.error(error);
+              });
+            </script>
+            <div class="explanation">
+              Derived of water, sunflower, olive, and banana, your base is the foundation of your new skincare routine. We kept it simple and included only the essentials.
+            </div>
+          </div>
+        </div>
+        <div class="step _two">
+          <div class="title">Step 2: Sources of Your Active Ingredients*</div>
+          <div class="content">
+            <% it.actives?.forEach(active => { %>
+            <div class="active">
+              <div class="name-qrcode">
+                <span class="active-name"><%= active.name %></span>
+                <div class="qrcode"><canvas id="canvas_<%= active.id %>" width="125px" height="125px"></canvas></div>
+                <script>
+                  QRCode.toCanvas(document.getElementById("canvas_<%= active.id %>"), "<%= active.handle %>", {
+                    width: 80,
+                    color: {
+                      dark: "#00000099"
+                    }
+                  }, function(error) {
+                    if (error) console.error(error);
+                  });
+                </script>
+              </div>
+              <div class="description">
+                <%= active.description ?? "" %>
+              </div>
+            </div>
+            <% }) %>
+            <% if(it.count < 10){%>
+            <% for(let i=it.count; i < 10; i++){ %>
+            <div class="active">
+              <div class="name-qrcode">
+                <span class="active-name">Blank</span>
+                <div class="qrcode"><canvas id="canvas_blank_<%= i %>" width="125px" height="125px"></canvas></div>
+                <script>
+                  QRCode.toCanvas(document.getElementById("canvas_blank_<%= i %>"), "https://manaknightdigital.com/products/blank", {
+                    width: 80,
+                    color: {
+                      dark: "#00000099"
+                    }
+                  }, function(error) {
+                    if (error) console.error(error);
+                  });
+                </script>
+              </div>
+              <div class="description">
+                <!-- Balances Forumula Concentration -->
+              </div>
+            </div>
+            <%}%>
+            <%}%>
+          </div>
+        </div>
+      </div>
+      <div class="footer-note">
+        *All actives contain varying amounts of same ingredients found in basecream - for full information scan the QR codes.
+      </div>
+    </div>
+    <div class="right">made with you. made for you. made by you. <img src="/image/CreatedBy_Icon_Black_RGB.png" class="logo-svg" width="30px" height="30px"> made with you. made for you. made by you.</div>
+  </div>
+</body>
+
+</html>

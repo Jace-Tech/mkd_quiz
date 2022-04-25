@@ -1,0 +1,11 @@
+
+<% if(it.layout_clean_mode) {%>
+<% layout("../layouts/member/Clean", {get_page_name:() => "Dashboard"}) %>
+<% } else {%>
+<% layout("../layouts/member/Main",{get_page_name:() => "Dashboard"}) %>
+<%}%>
+
+
+<div class="tab-content mx-4 my-4" id="nav-tabContent">
+
+</div>

@@ -1,0 +1,1455 @@
+html,
+body {
+  scroll-behavior: smooth;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+body {
+  background: #f3f4ee;
+  margin: 0;
+  height: 100%;
+  height: 100vh;
+  min-height: 100vh;
+}
+* {
+  box-sizing: border-box;
+}
+@font-face {
+  font-family: "Bradford LL";
+  src: url("/fonts/BradfordLL-Regular.woff2") format("woff2"), url("/fonts/BradfordLL-Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Bradford LL";
+  src: url("/fonts/BradfordLL-Italic.woff2") format("woff2"), url("/fonts/BradfordLL-Italic.woff") format("woff");
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Necto Mono";
+  src: url("/fonts/Necto-Mono.woff2") format("woff2"), url("/fonts/Necto-Mono.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "TT Nooks Script";
+  src: url("/fonts/TTNooksScript-Bold.woff2") format("woff2"), url("/fonts/TTNooksScript-Bold.woff") format("woff");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+/*arrows*/
+.arrow {
+  display: block;
+  height: 100%;
+  width: 10px;
+}
+.arrow::after {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-right-style: solid;
+  border-right-width: 2px;
+  content: "";
+  display: inline-block;
+  position: absolute;
+  height: 5px;
+  left: 0px;
+  bottom: 0px;
+  width: 5px;
+}
+.arrow.is-triangle::after {
+  border-style: solid;
+  border-width: 0 0 12px 12px;
+  height: 0;
+  width: 0;
+}
+.arrow.is-check::after {
+  width: 6px;
+}
+.arrow.arrow-bar::before {
+  position: absolute;
+  bottom: 1px;
+  left: 5px;
+  content: "";
+  height: 17px;
+  width: 2px;
+  transform-origin: bottom;
+  -moz-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+.arrow.is-top {
+  -moz-transform: rotate(225deg);
+  -ms-transform: rotate(225deg);
+  -webkit-transform: rotate(225deg);
+  transform: rotate(225deg);
+}
+.arrow.is-right {
+  -moz-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+.arrow.is-bottom {
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+.arrow.is-left {
+  -moz-transform: rotate(135deg);
+  -ms-transform: rotate(135deg);
+  -webkit-transform: rotate(135deg);
+  transform: rotate(135deg);
+}
+.arrow::after,
+.arrow .arrow::after {
+  border-color: #231f20;
+}
+.arrow.is-triangle::after,
+.arrow .arrow.is-triangle::after {
+  border-color: transparent;
+  border-bottom-color: red;
+}
+.arrow::before,
+.arrow .arrow::before {
+  background-color: #231f20;
+}
+
+#arrowTopLeft {
+  position: absolute;
+  margin: 0px 0px 0px 0px;
+}
+#arrowTopRight {
+  position: absolute;
+  margin: 0px 0px 0px 0px;
+}
+
+/*arrows end*/
+
+/*page 1 starts*/
+#page1 {
+  display: block;
+  overflow-x: hidden;
+  max-width: 100%;
+  height: 100vh;
+  min-height: 560px;
+}
+#page1 .container {
+  height: 100%;
+  min-height: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+#page1 .firstRow {
+  width: 100%;
+  height: 120px;
+  display: flex;
+  z-index: 2;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  border-bottom: 1px solid;
+  background: #f3f4ee;
+}
+#page1 .firstRow .dash {
+  width: 4px;
+  height: 1px;
+  margin-right: 8px;
+  /* display: inline-block; */
+  background-color: #101010;
+}
+#page1 .secondRow {
+  width: 100%;
+  height: calc(100vh - 120px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0px;
+}
+#page1 .columns {
+  overflow: hidden;
+  display: block;
+  width: 50%;
+  max-width: 640px;
+  height: 100%;
+  display: flex;
+  margin-left: clamp(20px, 3%, 5%);
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+#page1 .main-image-container {
+  height: 100%;
+  width: 100%;
+  max-width: 50%;
+  text-align: end;
+}
+#page1 .main-image-container img {
+  height: 100%;
+  max-height: 100%;
+  border-left: 1px solid black;
+  width: 90%;
+
+  object-fit: cover;
+}
+
+#page1 .firstRow h1 {
+  display: inline-block;
+  margin: 0;
+  margin-left: 3vw;
+  padding-right: 15px;
+  font: italic 32px "Bradford LL";
+  font-weight: 500;
+  color: #231f20;
+  line-height: 40px;
+  margin-bottom: 6px;
+}
+#page1 .firstRow h5 {
+  margin: 0;
+  font: 10px "Necto Mono";
+  color: #231f20;
+  line-height: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#page1 .secondRow .heading {
+  font: italic 44px "Bradford LL";
+  color: #231f20;
+  text-align: left;
+  margin-bottom: 72px;
+  padding-left: 8px;
+}
+#page1 .secondRow .underlineSpan {
+  padding-bottom: 4px;
+  border-bottom: 1px solid;
+}
+#page1 .secondRow .para {
+  font: 16px "Necto Mono";
+  color: #231f20;
+  padding-left: 8px;
+  text-align: left;
+  margin-bottom: 100px;
+}
+
+#page1 .secondRow .beginButton {
+  background: #737a73;
+  color: #ffffff;
+  padding: 10px 65px;
+  font: 12px "Necto Mono";
+  border: none;
+  margin-bottom: 16px;
+  margin-left: 8px;
+  cursor: pointer;
+  transition: all 200ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+#page1 .secondRow .beginButton:hover {
+  background: #444242;
+  color: white;
+  transition: all 200ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+#page1 .secondRow .beginButton:focus {
+  background: #444242;
+}
+
+/*page 1 ends*/
+
+/*page 2 starts*/
+#page2 {
+  display: none;
+  min-height: 100%;
+  height: 100%;
+}
+#page2 .container {
+  min-height: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+#page2 .row {
+  text-align: center;
+  margin-bottom: 32px;
+}
+#page2 h4 {
+  margin-top: 0;
+  font: 32px "Necto Mono";
+  color: #231f20;
+}
+#page2 h1 {
+  font: italic 56px "Bradford LL";
+  color: #231f20;
+}
+/*page 2 ends*/
+
+/*page 3 starts*/
+#page3 {
+  display: none;
+  height: 100%;
+  min-height: 100%;
+}
+.container {
+  width: 100%;
+  /* height: 100%; */
+  min-height: 100%;
+}
+.container.center-everything {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 0px 60px 0px;
+}
+.container.mto {
+  padding: 60px 0px 60px 0px;
+}
+.headerRow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #101010;
+  background: #f3f4ee;
+  z-index: 1101;
+}
+.headerRow .nav-item {
+  padding: 0px 8px;
+  height: 100%;
+  width: calc(100% / 3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.nav-item.nextBtn {
+  justify-content: flex-end;
+  cursor: pointer;
+}
+.nav-item.prevBtn {
+  cursor: pointer;
+  justify-content: flex-start;
+}
+.nav-item.bordered {
+  border-right: 1px solid #101010;
+  border-left: 1px solid #101010;
+}
+#page3 .headerRow .nav-item.hide {
+  display: none;
+}
+.control-arrows {
+  cursor: pointer;
+  height: 100%;
+  padding: 0 16px 0 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+.control-arrows img {
+  width: 20px;
+}
+.createdByDiv {
+  text-align: center;
+  font: 14px "Necto Mono";
+}
+
+#page3 .questionRow {
+  text-align: center;
+}
+#page3 .questionRow.mtb {
+  padding: 36px 0;
+  border-bottom: 1px solid #101010;
+}
+#page3 .questionRow.mtb.no-note {
+  margin-bottom: 10vh;
+}
+#page3 .questionRow.mtb.no-note.no-image {
+  margin-bottom: 16vh;
+}
+
+#page3 .questionRow h1 {
+  font: italic 40px "Bradford LL";
+  margin: 0;
+  color: #231f20;
+  line-height: 66px;
+}
+#page3 .noteRow {
+  position: relative;
+  width: 100%;
+  display: flex;
+  z-index: 1100;
+  flex-direction: row;
+  justify-content: stretch;
+}
+.noteRow {
+  position: relative;
+  width: 100%;
+  display: flex;
+  z-index: 1100;
+  margin-bottom: 16vh;
+  flex-direction: row;
+  justify-content: stretch;
+}
+#page3 .row.noteRow.image-below {
+  margin-bottom: 8vh;
+}
+#page3 .noteRow .noteTitle {
+  border-bottom: 1px solid #101010;
+  border-right: 1px solid #101010;
+  display: flex;
+  position: relative;
+  background: transparent;
+  align-items: center;
+  justify-content: center;
+  -webkit-appearance: none;
+  text-transform: uppercase;
+  padding: 0 16px;
+}
+#page3 .noteRow .noteTitle h4 {
+  font: 15px "Necto Mono";
+  white-space: nowrap;
+}
+#page3 .noteRow .noteDesc {
+  border-bottom: 1px solid #101010;
+  display: flex;
+  position: relative;
+  background: none;
+  align-items: center;
+  justify-content: center;
+  -webkit-appearance: none;
+  padding: 0 6vw;
+  width: 100%;
+}
+#page3 .noteRow .noteDesc p {
+  font: 14px "Necto Mono";
+}
+#page3 #noteRow,
+#page3 #questionRow {
+  display: none;
+}
+
+#page3 .answerRow {
+  width: 100%;
+  display: none;
+  text-align: center;
+}
+.answerInner.typeText,
+.answerInner.typeNum {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 95%;
+  max-width: 524px;
+  margin: 0 auto;
+  border-bottom: 1px solid #101010;
+}
+.answerInner.typeText input,
+.answerInner.typeNum input {
+  width: 85%;
+  height: 100%;
+  padding: 16px 0 16px 60px;
+  background: transparent;
+  border: none;
+  color: #231f20;
+  font: 24px "Necto Mono";
+  line-height: 30px;
+  text-align: center;
+}
+.answerInner.typeText .nextBtn,
+.answerInner.typeNum .nextBtn {
+  height: 100%;
+  padding: 20px 0 20px 20px;
+  cursor: pointer;
+}
+input::placeholder {
+  color: #464846;
+  opacity: 1;
+}
+input:-ms-input-placeholder {
+  color: #464846;
+}
+input::-ms-input-placeholder {
+  color: #464846;
+}
+.typeText input:focus,
+.typeNum input:focus {
+  outline: none;
+}
+.answerInner {
+  display: flex;
+  flex-direction: row;
+  margin: auto;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.answerInner .arrowAnswerBtn {
+  display: flex;
+  width: 15%;
+  align-items: center;
+  justify-content: flex-end;
+}
+.typeSlide .answerInner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.typeMcq .answerInner .mcqOptions {
+  height: 100%;
+}
+.typeMcq .answerInner .multiBtns {
+  height: 100%;
+  width: 100%;
+}
+.typeMcq .answerInner {
+  display: grid;
+  margin: auto;
+  align-items: center;
+  justify-content: center;
+  grid-auto-rows: 1fr;
+  grid-template-columns: repeat(auto-fit, 200px);
+  gap: 16px;
+}
+.typeMcqi .answerInner {
+  width: 95%;
+}
+.typeSelection .answerInner {
+  width: 50%;
+}
+
+.mcqOptions {
+  display: inline-block;
+  /* margin: 10px 10px; */
+  vertical-align: -webkit-baseline-middle;
+  vertical-align: -moz-baseline-middle;
+}
+.mcqiBtn {
+  padding: 0px;
+  margin: 0px;
+  border: none;
+  height: 100%;
+  width: 100%;
+}
+.mcqiBtn:hover {
+  transform: scale(1.1);
+}
+.mcqiBtn:focus {
+  transform: scale(1.1);
+}
+.mcqiOptions {
+  display: inline-block;
+  margin: 5px 5px;
+}
+.mcqiOptions .mcqiImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.selectionOptions {
+  display: inline-block;
+  margin: 10px 10px;
+}
+
+.multiBtns {
+  cursor: pointer;
+  background: #000;
+  color: #ffff;
+  border: #000;
+  padding: 16px 12px;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  font: 14px "Necto Mono";
+  transition: all 200ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.multiBtns:hover {
+  background: #444242;
+  color: whitesmoke;
+  border: #000;
+  transition: all 200ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.multiBtns:focus {
+  background: #444242;
+  color: whitesmoke;
+  border: #000;
+  transition: all 200ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.selectionBtns {
+  background: #000;
+  color: #ffff;
+  border: #000;
+  padding: 5px 5px;
+  width: 196px;
+  height: 36px;
+  font: 14px "Necto Mono";
+  cursor: pointer;
+}
+.selectionBtns:hover {
+  background: #444242;
+  color: whitesmoke;
+  border: #000;
+}
+.selectionBtns:active,
+.active {
+  background: #444242;
+  color: whitesmoke;
+  border: #000;
+}
+#progressBarSection {
+  display: none;
+}
+#myBar {
+  width: 1%;
+  height: 30px;
+  background-color: #000;
+  z-index: 99999;
+}
+.progressColumnsDiv {
+  position: absolute;
+  top: 0px;
+  height: 30px;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.progressBar {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 9999;
+  background: #f3f4ee;
+  border: 1px solid #101010;
+}
+.progressBar .progressColumns {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-self: center;
+  border: none;
+  border-right: 1px solid #101010;
+  height: 30px;
+  padding: 0;
+  background: none;
+  align-items: center;
+  width: 33.33334%;
+  justify-content: center;
+}
+.progressBar .progressColumns:last-child {
+  border-right: none;
+}
+.progressBar .progressColumns:first-child {
+  border-left: none;
+}
+.progressBar .progressColumns p {
+  font: 12px "Necto mono";
+  margin: 0;
+}
+.typeSlide .imgDiv {
+  display: none;
+}
+.typeSlide .imgDiv img {
+  height: 150px;
+  width: auto;
+}
+.sliderDiv {
+  margin: 48px auto 0 auto;
+  width: 85%;
+}
+.slidecontainer {
+  width: 100%;
+}
+.slider {
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  outline: none;
+  width: 100%;
+  height: 20px;
+  -webkit-box-shadow: inset 0px 0px 0px 1px #000;
+  -moz-box-shadow: inset 0px 0px 0px 1px #000;
+  box-shadow: inset 0px 0px 0px 1px #000;
+  background: transparent;
+  opacity: 1;
+}
+.slider::-webkit-slider-thumb {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  width: 15px;
+  height: 45px;
+  background: #d8d8d8;
+  opacity: 0.9;
+  border: 1px solid #00000035;
+  cursor: pointer;
+  -webkit-transition: opacity 200ms;
+  -moz-transition: opacity 200ms;
+  transition: opacity 200ms;
+}
+.slider::-moz-range-thumb {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  width: 15px;
+  height: 45px;
+  background: #d8d8d8;
+  opacity: 0.9;
+  border: 1px solid #00000035;
+  cursor: pointer;
+  -webkit-transition: opacity 200ms;
+  -moz-transition: opacity 200ms;
+  transition: opacity 200ms;
+}
+.slider.active::-webkit-slider-thumb {
+  opacity: 1;
+  background: #000000;
+  border: 1px solid #000000;
+}
+.slider.active::-moz-range-thumb {
+  opacity: 1;
+  background: #000000;
+  border: 1px solid #000000;
+}
+.sliderRanges {
+  display: flex;
+  flex-direction: row;
+  margin: 30px auto;
+  color: #000;
+  line-height: 20px;
+  word-break: break-word;
+  overflow: hidden;
+}
+.sliderRanges .ranges {
+  font: 16px "Necto Mono";
+}
+.sliderRanges :first-child {
+  text-align: left;
+}
+.sliderRanges :last-child {
+  text-align: right;
+}
+.ranges {
+  flex: 1;
+}
+
+#page3 .responseRow {
+  margin-top: 170px;
+  margin-bottom: 240px;
+  text-align: -webkit-center;
+}
+#page3 .responseRow .responseInner {
+  width: 50%;
+}
+#page3 .responseRow .responseInner h4 {
+  width: 60%;
+  font: italic 28px "Bradford LL";
+  color: #231f20;
+  line-height: 30px;
+}
+#page3 .responseRow .responseInner p {
+  width: 60%;
+  text-align: left;
+  font: 16px "Bradford LL";
+  color: #231f20;
+  line-height: 22px;
+}
+
+/*page 3 ends*/
+
+/*page 4 starts*/
+#page4 {
+  display: none;
+  height: 100%;
+  min-height: 100%;
+}
+#page4 .container {
+  width: 100%;
+  display: flex;
+  min-height: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+#page4 .headerRow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #101010;
+  background: #f3f4ee;
+  z-index: 1101;
+}
+#page4 .headerRow .nav-item {
+  padding: 0px 8px;
+  height: 100%;
+  width: calc(100% / 3);
+  text-align: center;
+  position: relative;
+}
+#page4 .createdByDiv {
+  text-align: center;
+  font: 14px "Necto Mono";
+}
+
+#page4 .customImgRow {
+  text-align: -webkit-center;
+  text-align: -moz-center;
+}
+
+#page4 .customImgRow .imgRowInner {
+  width: max-content;
+  width: -moz-max-content;
+  position: relative;
+  
+  /* My style */
+  height: fit-content;
+}
+
+#page4 .createdByName {
+  font: 16px "Necto Mono";
+  font-weight: 700;
+  width: max-content;
+  width: -moz-max-content;
+  padding-bottom: 4px;
+  border-bottom: 1px solid black;
+
+  /* My style */
+  position: absolute;
+  top: 66%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#page4 .customImgRow img {
+  width: 335px;
+  transform: translateX(-20%);
+}
+@media only screen and (max-width: 992px) {
+  #page4 .createdByNameContainer {
+    left: 39%;
+  }
+
+  #page4 .customImgRow img {
+    margin-right: unset;
+  }
+}
+
+/*page 4 ends*/
+
+/*page5 starts*/
+#page5 {
+  display: none;
+  height: 100%;
+  min-height: 100%;
+}
+
+#page5 .responseRow {
+  text-align: -webkit-center;
+  text-align: -moz-center;
+}
+#page5 .responseRow .responseInner {
+  width: 100%;
+  max-width: 648px;
+}
+#page5 .responseRow .responseInner .responseHead {
+  text-align: center;
+}
+#page5 .responseRow .responseInner .responseHead h1 {
+  margin: 0 0 36px 0;
+  font: italic 44px "Bradford LL";
+  font-weight: bold;
+  color: #231f20;
+}
+#page5 .responseRow .responseInner .responseBody {
+  text-align: center;
+}
+#page5 .responseRow .responseInner .responseBody p {
+  font: 15px "Necto Mono";
+  font-weight: 500;
+  color: #231f20;
+  line-height: 30px;
+  margin: 0px;
+}
+/*page 5 ends here*/
+
+/*page6 starts*/
+#page6 {
+  display: none;
+  height: 100%;
+  min-height: 100%;
+}
+#page6 .container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 110px;
+  background-color: #f5f6ef;
+}
+#page6 .finalRow {
+  /* margin: 180px auto;
+  width: 80%; */
+  text-align: center;
+}
+#page6 .finalDesc h3 {
+  margin: 0;
+  font: italic 40px "Bradford LL";
+}
+#page6 .imgDiv img {
+  max-height: 220px;
+  margin-bottom: 72px;
+  width: auto;
+  object-fit: contain;
+}
+
+/*page6 ends*/
+
+/*page7 starts*/
+#page7 {
+  display: none;
+  height: 100%;
+  min-height: 100%;
+}
+#page7 .container {
+  padding: 60px 0;
+}
+#page7 .headerRow {
+  justify-content: center !important;
+}
+#page7 .finalProfileDiv {
+  font: 14px "Necto Mono";
+}
+#page7 .topline {
+  border-width: 2px;
+}
+#page7 .finalProfileArrows {
+  top: unset !important;
+}
+#page7 .finalArrowLine {
+  position: relative;
+  top: 7px;
+  right: -2px;
+}
+#page7 #arrowLineRight {
+  width: 12px;
+  height: 1px;
+  background-color: #343a40;
+}
+
+#page7 .messageRow {
+  padding: 60px 0px;
+  width: 100%;
+  text-align: -webkit-center;
+  border-bottom: 1px solid #000;
+}
+#page7 .messageRow .messageInner {
+  /* width: 60%; */
+  padding: 0 16px;
+}
+#page7 .messageRow .nameDiv h5 {
+  text-align: center;
+  margin: 0;
+  margin-bottom: 16px;
+  font: 18px "Necto Mono";
+  text-transform: uppercase;
+}
+#page7 .messageRow .messageDiv {
+  margin: 0 auto 16px auto;
+}
+#page7 .messageRow .messageDiv h3 {
+  text-align: center;
+  font: italic 44px "Bradford LL";
+  font-weight: 700;
+  margin: 0;
+  margin-bottom: 16px;
+}
+#page7 .messageRow .paraDiv {
+  width: 100%;
+  max-width: 710px;
+  text-align: center;
+}
+#page7 .messageRow .paraDiv p {
+  font: 16px "Necto Mono";
+  text-align: center;
+  margin: 0;
+  margin-bottom: 20px;
+}
+#page7 .messageRow .buttonDiv {
+  position: relative;
+}
+#page7 .messageRow .buttonDiv .button {
+  background: #737a73;
+  color: #ffffff;
+  padding: 10px 65px;
+  font: 12px "Necto Mono";
+  border: none;
+  cursor: pointer;
+  transition: all 200ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+}
+#page7 .messageRow .buttonDiv .button:hover {
+  background: #444242;
+  color: white;
+  transition: all 200ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+#page7 .messageRow .buttonDiv .button:focus {
+  background: #444242;
+}
+
+#page7 .messageRow .buttonDiv .arrow::before {
+  background-color: #fff;
+}
+#page7 .messageRow .buttonDiv .arrow.arrow-bar::before {
+  bottom: 30px;
+  content: "";
+  height: 7px;
+  position: absolute;
+  right: 4px;
+  left: unset;
+  transform-origin: bottom;
+  width: 1px;
+  -moz-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+#page7 .messageRow .buttonDiv .arrow::after {
+  border-color: #fff;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-right-style: solid;
+  border-right-width: 2px;
+  content: "";
+  display: inline-block;
+  height: 3px;
+  left: 4px;
+  position: absolute;
+  top: 3px;
+  width: 3px;
+}
+
+#page7 .profile-row {
+  padding: 50px 0px 80px 0px;
+  width: 100%;
+  text-align: -webkit-center;
+  border-bottom: 1px solid #000;
+}
+#page7 .profile-row .rowInner {
+  width: 100%;
+  padding: 0 5%;
+}
+#page7 .profile-row .rowInner h1 {
+  font: italic 40px "Bradford LL";
+  color: #231f20;
+  line-height: 66px;
+}
+#page7 .main-body {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+}
+#page7 .main-body .bodyTitle h4 {
+  font: 24px "Necto Mono";
+  text-transform: uppercase;
+  color: #231f20;
+  margin-top: 16px;
+  margin-bottom: 20px;
+  display: inline-block;
+}
+#page7 .main-body .bodyDesc {
+  margin-bottom: 34px;
+}
+#page7 .main-body .bodyDesc p {
+  margin: 0;
+  font: 14px "Necto Mono";
+}
+#page7 .main-body .bodyProgress {
+  margin-bottom: 16px;
+}
+#page7 .profile-row .bodyCols {
+  width: 45%;
+  max-width: 720px;
+  min-width: 320px;
+  margin: 30px auto;
+}
+#page7 .profile-row .bodyProgress {
+  width: 100%;
+  height: 10px;
+  border: 1px solid black;
+  text-align: left;
+}
+#page7 .profile-row .movingBar {
+  height: 100%;
+  background-color: #000;
+  z-index: 9;
+}
+
+#page7 .aboutRow {
+  padding: 50px 0px;
+  width: 100%;
+  text-align: -webkit-center;
+}
+#page7 .aboutRow .aboutInner {
+  /* width: 90%; */
+  padding: 0 16px;
+}
+#page7 .aboutRow .nameDiv {
+  font: 24px "Bradford LL";
+  margin: 5px auto;
+}
+#page7 .aboutRow .nameDiv h5 {
+  margin: auto;
+}
+#page7 .aboutRow .aboutDiv {
+  font: italic 30px "Bradford LL";
+}
+#page7 .aboutRow .aboutDiv h3 {
+  text-align: center;
+  margin: 60px auto 48px auto;
+}
+#page7 .aboutRow .paraDiv {
+  width: 100%;
+}
+#page7 .aboutRow .paraDiv p {
+  max-width: 710px;
+  text-align: center;
+  font: 16px "Necto Mono";
+  margin-bottom: 60px;
+}
+#page7 .buttonDiv {
+  position: relative;
+}
+#page7 .buttonDiv .button {
+  background: #737a73;
+  color: #ffffff;
+  padding: 10px 65px;
+  font: 12px "Necto Mono";
+  border: none;
+  cursor: pointer;
+  transition: all 200ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+#page7 .buttonDiv .button:hover {
+  background: #444242;
+  color: white;
+  transition: all 200ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+#page7 .buttonDiv .button:focus {
+  background: #444242;
+}
+
+#page7 .arrowCustom {
+  padding: 0 0 0 10px;
+  margin-right: -15px;
+  display: inline-flex;
+}
+#page7 .arrowCustom.control-arrows img {
+  width: 11px;
+}
+/*page7 ends here*/
+
+/*page8 starts*/
+#page8 .headerRow {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: stretch;
+  border: 1px solid;
+  border-left: none;
+  border-right: none;
+  background: #f3f4ee;
+  z-index: 1101;
+}
+#page8 .headerColumns {
+  flex: 1;
+  display: flex;
+  padding: 0;
+  position: relative;
+  background: none;
+  align-items: center;
+  justify-content: center;
+}
+#page8 .prevBtn {
+  position: fixed;
+  left: 0px;
+  top: 1%;
+  height: 41px;
+  width: 65px;
+  background: transparent;
+  border: none;
+  padding: 10px 45px 0px 0px;
+}
+#page8 #arrowTopLeft {
+  position: relative;
+}
+#page8 .nextBtnTop {
+  position: fixed;
+  right: 0px;
+  top: 1%;
+  height: 41px;
+  width: 65px;
+  background: transparent;
+  border: none;
+  padding: 0px 00px 0px 45px;
+}
+#page8 #arrowTopRight {
+  position: relative;
+}
+#page8 .createdByDiv {
+  width: 25%;
+  text-align: center;
+  border: 1px solid;
+  padding: 15px;
+  border-bottom: none;
+  border-top: none;
+}
+#page8 .topline {
+  border-width: 2px;
+}
+#page8 .envProfileRow {
+  margin-top: 170px;
+  margin-bottom: 170px;
+  text-align: -webkit-center;
+}
+#page8 .envProfileRow .envInner {
+  width: 50%;
+}
+#page8 .envProfileRow .envInner .envHeading {
+  width: 50%;
+  font: italic 28px "Bradford LL";
+  color: #231f20;
+  line-height: 30px;
+}
+#page8 .envProfileRow .envInner .envDesc {
+  width: 50%;
+}
+#page8 .envProfileRow .envInner .envDesc .descRow {
+  display: flex;
+  flex-direction: row;
+  margin: 15px auto;
+}
+#page8 .envProfileRow .envInner .envDesc .envTitle {
+  display: inline-block;
+  flex: 1;
+  text-align: left;
+  align-self: center;
+}
+#page8 .envProfileRow .envInner .envDesc .envTitle h6 {
+  font: 16px "Bradford LL";
+  margin: auto;
+}
+#page8 .envProfileRow .envInner .envDesc .envValue {
+  display: inline-block;
+  flex: 1;
+  text-align: right;
+  align-self: center;
+}
+#page8 .envProfileRow .envInner .envDesc .envValue h3 {
+  font: italic 38px "Bradford LL";
+  margin: auto;
+}
+
+/*page8 ends here*/
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  box-shadow: 0 0 0 40px #f3f4ee inset !important;
+  -webkit-box-shadow: 0 0 0 40px #f3f4ee inset !important;
+}
+
+#typeMcq button.highlight,
+#typeMcqi button.highlight,
+#typeSelection button.highlight {
+  border: 2px solid white;
+  outline: 3px solid #000;
+  transition: border 200ms ease-in-out, outline 200ms ease-in-out;
+}
+
+#weatherApi {
+  display: none;
+  max-width: 500px;
+  padding: 0 16px;
+  margin: auto;
+}
+#weatherApi .header {
+  font: italic 42px "Bradford LL";
+  margin-bottom: 50px;
+}
+#weatherApi .info .item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+#weatherApi .info .item .info-header {
+  font: 14px "Necto Mono";
+  display: flex;
+  align-items: center;
+}
+#weatherApi .info .item .info-value {
+  font: italic 44px "Bradford LL";
+  display: flex;
+  align-items: center;
+  text-transform: capitalize;
+}
+
+.lds-ring {
+  width: 80px;
+  height: 80px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 999999;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  background: #00000090;
+}
+.lds-ring.active {
+  display: inline-flex;
+}
+.lds-ring div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border: 8px solid #fff;
+  border-radius: 50%;
+  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: #fff transparent transparent transparent;
+}
+.lds-ring div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+.lds-ring div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+.lds-ring div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+@keyframes lds-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+#typeGeo .answerInner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 95%;
+  position: relative;
+  max-width: 524px;
+  margin: 0 auto;
+  border-bottom: 1px solid #101010;
+}
+#typeGeo .answerInner input {
+  width: 100%;
+  height: 100%;
+  padding: 16px 0;
+  background: transparent;
+  border: none;
+  color: #231f20;
+  font: 24px "Necto Mono";
+  line-height: 30px;
+  text-align: center;
+}
+#typeGeo .answerInner input:focus {
+  outline: none;
+}
+#typeGeo .answerInner .arrowAnswerBtn {
+  display: flex;
+  height: 100%;
+  width: 20%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 20px 0 20px 20px;
+  cursor: pointer;
+}
+input[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+}
+#typeGeo #result {
+  display: none;
+  position: absolute;
+  top: 100%;
+  width: 100%;
+  color: #000000;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+}
+#typeGeo #result ul {
+  padding: 4px 0;
+  list-style-type: none;
+  margin: 0;
+}
+#typeGeo #result ul li {
+  padding: 8px;
+  text-align: left;
+  font: 16px "Necto Mono";
+}
+#typeGeo #result ul li:hover,
+#typeGeo #result ul li:active,
+#typeGeo #result ul li.active {
+  background: #eee;
+  color: #101010;
+  cursor: pointer;
+}
+
+img.image-missing {
+  display: none;
+  border-left: none;
+}

@@ -1,0 +1,50 @@
+<% if(it.layout_clean_mode) {%>
+<% layout("../layouts/admin/Clean") %>
+<% } else {%>
+<% layout("../layouts/admin/Main") %>
+<%}%>
+
+<%~ includeFile("../partials/admin/Breadcrumb", it)%>
+
+<div class="tab-content mx-4 my-4">
+  <div class="row">
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+      <%~ includeFile("../partials/admin/GlobalResponse.eta", it) %>
+      <div class="form-container card p-4">
+        <h5 class="primaryHeading2 mb-4 text-md-left pl-3">
+          <%= it.heading %>
+        </h5>
+
+        <form action="/admin/profile-sections-edit/<%= it.form_fields['id'] %>" method="POST">
+
+
+          <div class="form-group  col-md-5 col-sm-12 ">
+            <label for="section_title" class="control-label">Section title</label>
+
+
+            <input type="text" class="form-control data-input" id="text_section_title" name="section_title" value="<%= it.form_fields['section_title'] %>" />
+
+
+          </div>
+
+          <div class="form-group  col-md-5 col-sm-12 ">
+            <label for="output_variable_list" class="control-label">Variables List</label>
+
+            <small class="text-muted">Can select multiple</small>
+            <select class="selectpicker custom-picker d-block w-100" data-style="btn-light" data-live-search="true" id="text_output_variable_list" name="output_variable_list" multiple size="<%= it.output_variables?.length ?? 5 %>" style="height: 100%;">
+              <% it.output_variables?.forEach(ovar => { %>
+              <option value="<%= ovar.id %>" <%= it.form_fields['output_variable_list'].includes(ovar.name) ? 'selected' : ''%>><%= ovar.name %></option>
+              <% }) %>
+            </select>
+          </div>
+
+
+          <div class="form-group pl-3">
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>

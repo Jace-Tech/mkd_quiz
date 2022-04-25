@@ -1,0 +1,39 @@
+
+<% layout("../layouts/member/Clean") %>
+
+
+
+ <section>
+    <div class="row">
+        <div class="col-lg-3 col-md-3 col-sm-1 col-xs-1"></div>
+        <div class="col-lg-6 col-md-6 col-sm-10 col-xs-10 p-5 auth-wrap">
+            <div class='text-center'>
+                <h1>Forgot Password</h1>
+            </div>
+            <div class="form-container form-container-auth">
+                <%~ includeFile("../partials/admin/GlobalResponse.eta", it) %>
+                <form action="/member/forgot" method="POST">
+                    <div class="form-group required">
+                        <label class='control-label' for="Email">Email</label>
+                        <input type="email" required name="email" class="form-control site-input" placeholder="Email address" required="true" autofocus="true">
+                        <% if(it.validationError){ %>
+                                <% if(it.validationError.email){ %>
+                                    <div class="alert alert-danger my-4" role="alert">
+                                        <%= it.validationError.email  %>
+                                    </div>
+                                <%}%>
+                            <%}%>
+                        
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" name='btn-login' class="btn btn-accent-light btn-block btn-primary" value="Reset Password">
+                    </div>
+                </form>
+                <div class="form-group mt-3 d-flex justify-content-center">
+                    <a href="/member/login" id="mkd-forgot-password-link">Back to Login</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-1 col-xs-1"></div>
+    </div>
+</section>

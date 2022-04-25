@@ -1,0 +1,123 @@
+<% if(it.layout_clean_mode) {%>
+<% layout("../layouts/admin/Clean") %>
+<% } else {%>
+<% layout("../layouts/admin/Main") %>
+<%}%>
+
+
+<style>
+  
+</style>
+<%~ includeFile("../partials/admin/Breadcrumb", it)%>
+
+
+<div class="tab-content mx-4 my-4">
+  <div class="row">
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+      <%~ includeFile("../partials/admin/GlobalResponse.eta", it) %>
+      <div class="form-container card p-4">
+        <h5 class="primaryHeading2 mb-4 text-md-left pl-3">
+          <%= it.heading %>
+        </h5>
+
+        <form action="/admin/rules-add" method="POST">
+
+
+          <div class="form-group required col-md-5 col-sm-12 ">
+            <label for="output_variable_name" class="control-label">Output variable</label>
+            <small class="text-muted">Can select one</small>
+            <select class="selectpicker custom-picker d-block w-100" data-style="btn-light" data-live-search="true" id="text_output_variable_name" name="output_variable_name" required>
+              <% it.outputVariables.forEach(function(outVar) { %>
+              <option class="select_mapping_status_option" value="<%= outVar.name %>">
+                <%= outVar.name %>
+              </option>
+              <% }) %>
+            </select>
+
+          </div>
+
+          <div class="form-group required col-md-5 col-sm-12 ">
+            <label for="actives" class="control-label">Actives</label>
+
+            <small class="text-muted">Can select multiple</small>
+            <select class="selectpicker custom-picker d-block w-100" data-style="btn-light" data-live-search="true" id="text_actives" name="actives" required multiple>
+              <% it.actives.forEach(function(active) { %>
+              <option class="select_text_actives" value="<%= active.name %>">
+                <%= active.name %>
+              </option>
+              <% }) %>
+            </select>
+
+          </div>
+
+          <div class="form-group required col-md-5 col-sm-12 ">
+            <label for="operator" class="control-label">Condition operator</label>
+
+
+            <small class="text-muted">Can select one</small>
+            <select class="selectpicker custom-picker d-block w-100" data-style="btn-light" data-live-search="true" id="select_mapping_operator" name="operator" required>
+              <% Object.keys(it.operator_mapping()).forEach(function(prop) { %>
+              <% const same = it.form_fields["operator"] == prop ? 'selected' : false %>
+              <option class="select_mapping_operator_option<%= same ? '_' + same : '' %>" value="<%= prop %>" <%= same %>>
+                <%= it.operator_mapping()[prop] %>
+              </option>
+              <% }) %>
+            </select>
+
+
+          </div>
+
+          <div class="form-group required col-md-5 col-sm-12 ">
+            <label for="compare_value" class="control-label">Compare value</label>
+
+
+            <input id="number_compare_value" required name="compare_value" value="<%= it.form_fields['compare_value'] %>" class="form-control" type="number" />
+
+
+          </div>
+
+          <div class="form-group  col-md-5 col-sm-12 ">
+            <label for="min" class="control-label">Between Min</label>
+
+
+            <input id="number_min" name="min" value="<%= it.form_fields['min'] %>" class="form-control" type="number" />
+
+
+          </div>
+
+          <div class="form-group  col-md-5 col-sm-12 ">
+            <label for="max" class="control-label">Between Max</label>
+
+
+            <input id="number_max" name="max" value="<%= it.form_fields['max'] %>" class="form-control" type="number" />
+
+
+          </div>
+
+          <div class="form-group required col-md-5 col-sm-12 ">
+            <label for="action" class="control-label">Action</label>
+
+
+            <small class="text-muted">Can select one</small>
+            <select class="selectpicker custom-picker d-block w-100" data-style="btn-light" data-live-search="true" id="select_mapping_action" name="action" required>
+              <% Object.keys(it.action_mapping()).forEach(function(prop) { %>
+              <% const same = it.form_fields["action"] == prop ? 'selected' : false %>
+              <option class="select_mapping_action_option<%= same ? '_' + same : '' %>" value="<%= prop %>" <%= same %>>
+                <%= it.action_mapping()[prop] %>
+              </option>
+              <% }) %>
+            </select>
+
+
+          </div>
+
+
+          <div class="form-group pl-3">
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>

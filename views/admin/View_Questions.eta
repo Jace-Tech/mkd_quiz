@@ -1,0 +1,118 @@
+<% if(it.layout_clean_mode) {%>
+<% layout("../layouts/admin/Clean") %>
+<% } else {%>
+<% layout("../layouts/admin/Main") %>
+<%}%>
+
+
+<%~ includeFile("../partials/admin/Breadcrumb", it)%>
+
+<div class="tab-content mx-4 my-4">
+  <div class="row">
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+      <%~ includeFile("../partials/admin/GlobalResponse.eta", it) %>
+      <div class="card" style='border-bottom:1px solid #ccc;'>
+        <div class="card-body">
+          <h4 class="primaryHeading2 text-md-left">
+            <%= it.heading %>
+          </h4>
+          <table class="table table-striped">
+
+            <tr>
+              <th>ID:</th>
+              <td>
+                <%= it.detail_fields["id"] %>
+              </td>
+            </tr>
+
+
+            <tr>
+              <th>Name:</th>
+              <td>
+                <%= it.detail_fields["quiz.name"] %>
+              </td>
+            </tr>
+
+
+            <tr>
+              <th>Question:</th>
+              <td>
+                <%= it.detail_fields["question"] %>
+              </td>
+            </tr>
+
+            <tr>
+              <th>Order:</th>
+              <td>
+                <%= it.detail_fields["order"] %>
+              </td>
+            </tr>
+
+
+            <tr>
+              <th>Note:</th>
+              <td>
+                <%= it.detail_fields["note"] %>
+              </td>
+            </tr>
+
+
+            <tr>
+              <th>Note type:</th>
+              <td>
+                <%= it.detail_fields["note_type"] %>
+              </td>
+            </tr>
+
+
+            <tr>
+              <th>Depends on question:</th>
+              <td>
+                <%= it.detail_fields["depends_on"] %>
+              </td>
+            </tr>
+
+
+            <tr>
+              <th>Slider range:</th>
+              <td>
+                <%= it.detail_fields["slider_range"] %>
+              </td>
+            </tr>
+
+
+            <tr>
+              <th>Main output variable:</th>
+              <td>
+                <%= it.detail_fields["output_variable_name"] %>: <%= it.detail_fields["weight"] %>
+              </td>
+            </tr>
+
+
+            <tr>
+              <th>Extra output variables:</th>
+              <td>
+                <% if(it.detail_fields["extra_output_variable"] && it.detail_fields["extra_output_variable"] !== "N/A") { %>
+                <% JSON.parse(it.detail_fields["extra_output_variable"]).forEach(oV => { %>
+                <%= oV.name + ': ' + oV.weight %> </br>
+                <% }) %>
+                <% } else { %>
+                N/A
+                <% }  %>
+              </td>
+            </tr>
+
+
+            <tr>
+              <th>Type:</th>
+              <td>
+                <%= it.detail_fields["type"] %>
+              </td>
+            </tr>
+
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,31 @@
+<% if (it.error) { %>
+  <% if (typeof it.error === "object") { %>
+    <% Object.keys(it.error).forEach(function(key) { %>
+       <div class="row flash-response">
+          <div class="col-md-12 mt-4 px-0">
+            <div class="alert alert-danger" role="alert">
+              <%= it.error[key] %>
+            </div>
+          </div>
+      </div>
+    <% }) %>
+  <% } else { %>
+    <div class="row flash-response">
+      <div class="col-md-12 mt-4 px-0">
+        <div class="alert alert-danger" role="alert">
+            <%= it.error %>
+        </div>
+      </div>
+    </div>
+  <% } %>
+<% } %>
+
+<% if (it.success) { %>
+    <div class="row flash-response">
+        <div class="col-md-12 px-0">
+            <div class="alert alert-success" role="success">
+                <%= it.success %>
+            </div>
+        </div>
+    </div>
+<% } %>

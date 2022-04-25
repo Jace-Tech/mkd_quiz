@@ -1,0 +1,96 @@
+
+<% if(it.layout_clean_mode) {%>
+<% layout("../layouts/admin/Clean") %>
+<% } else {%>
+<% layout("../layouts/admin/Main") %>
+<%}%>
+
+
+<%~ includeFile("../partials/admin/Breadcrumb", it)%>
+
+<div class="tab-content mx-4 my-4">
+  <div class="row">
+      <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+      <%~ includeFile("../partials/admin/GlobalResponse.eta", it) %>
+          <div class="card" style='border-bottom:1px solid #ccc;'>
+              <div class="card-body">
+                <h4 class="primaryHeading2 text-md-left">
+                  <%= it.heading %>
+                </h4>
+                <table class="table table-striped">
+                  
+                      <tr>
+                        <th>ID:</th>
+                        <td>
+                          <%= it.detail_fields["id"] %>
+                        </td>
+                      </tr>
+                  
+
+                      <tr>
+                        <th>Output variable:</th>
+                        <td>
+                          <%= it.detail_fields["output_variable_name"] %>
+                        </td>
+                      </tr>
+                  
+
+                      <tr>
+                        <th>Actives:</th>
+                        <td>
+                          <% if(it.detail_fields["actives"]) { %>
+                            <% JSON.parse(it.detail_fields["actives"]).forEach(active => { %>
+                            <%= active %> </br>
+                            <% }) %>
+                          <% } else { %>
+                            N/A
+                          <% }  %>
+                        </td>
+                      </tr>
+                  
+
+                      <tr>
+                        <th>Condition operator:</th>
+                        <td>
+                          <%= it.detail_fields["operator"] %>
+                        </td>
+                      </tr>
+                  
+
+                      <tr>
+                        <th>Compare value:</th>
+                        <td>
+                          <%= it.detail_fields["compare_value"] %>
+                        </td>
+                      </tr>
+                  
+
+                      <tr>
+                        <th>Between Min:</th>
+                        <td>
+                          <%= it.detail_fields["min"] %>
+                        </td>
+                      </tr>
+                  
+
+                      <tr>
+                        <th>Between Max:</th>
+                        <td>
+                          <%= it.detail_fields["max"] %>
+                        </td>
+                      </tr>
+                  
+
+                      <tr>
+                        <th>Action:</th>
+                        <td>
+                          <%= it.detail_fields["action"] %>
+                        </td>
+                      </tr>
+                  
+                </table>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

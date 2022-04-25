@@ -1,0 +1,512 @@
+* {
+  box-sizing: border-box;
+}
+@font-face {
+  font-family: "TT Nooks Script";
+  src: url("/fonts/TTNooksScript-Bold.woff2") format("woff2"), url("/fonts/TTNooksScript-Bold.woff") format("woff");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Bradford LL";
+  src: url("/fonts/BradfordLL-Regular.woff2") format("woff2"), url("/fonts/BradfordLL-Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Bradford LL";
+  src: url("/fonts/BradfordLL-Italic.woff2") format("woff2"), url("/fonts/BradfordLL-Italic.woff") format("woff");
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Necto Mono";
+  src: url("/fonts/Necto-Mono.woff2") format("woff2"), url("/fonts/Necto-Mono.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Debrovnik Hill Italic";
+  src: url("/fonts/Debrovnik Hill Italic.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Debrovnik Hill Reguler";
+  src: url("/fonts/Debrovnik Hill Reguler.ttf") format("truetype");
+}
+html {
+  height: 100%;
+}
+body {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+  flex-grow: 1;
+  -webkit-print-color-adjust: exact;
+}
+.logo-svg {
+  transform: rotate(90deg);
+  margin: 10px;
+}
+#main-letter {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  width: 100%;
+  /* max-width: 618px; */
+  margin: auto;
+  background-color: white;
+  height: 100vh;
+  /* min-height: 100%; */
+}
+#main-letter.print {
+  max-width: unset;
+}
+#main-letter .left,
+#main-letter .right {
+  width: max-content;
+  padding: 20px 8px;
+  font-family: "Bradford LL";
+  font-style: italic;
+  text-transform: capitalize;
+  font-size: 20px;
+  min-height: max-content;
+  text-align: center;
+}
+#main-letter .left {
+  transform: rotate(180deg);
+  writing-mode: vertical-lr;
+  margin-left: 6px;
+}
+#main-letter .right {
+  writing-mode: vertical-rl;
+  margin-right: 6px;
+}
+#main-letter .center {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  border: 1px solid black;
+  border-top: none;
+  border-bottom: none;
+}
+#main-letter .center .top {
+  padding: 20px 0 24px;
+  border-bottom: 1px solid black;
+}
+#main-letter .center .top .header-logo {
+  display: flex;
+  flex-direction: column;
+  width: max-content;
+  padding: 1px 24px;
+  margin: 0 auto;
+  position: relative;
+}
+#main-letter .center .top .header-logo::after {
+  content: "";
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 1.5px;
+  border-radius: 1px;
+  background-color: black;
+}
+#main-letter .center .header-logo .cr-logo {
+  font-family: "TT Nooks Script";
+  font-weight: 700;
+  font-size: 40px;
+}
+#main-letter .center .header-logo .customer-name {
+  text-align: center;
+  font-family: "Debrovnik Hill Italic";
+  text-transform: capitalize;
+  font-weight: 700;
+  color: black;
+  font-size: 32px;
+}
+
+#main-letter .center .middle {
+  padding: 24px 56px;
+  font-family: "Necto Mono";
+  font-size: 15px;
+  font-weight: 500;
+  border-bottom: 1px solid black;
+}
+#main-letter .center .middle .header {
+  font-family: "Bradford LL";
+  font-size: 28px;
+  text-align: center;
+  margin-bottom: 24px;
+}
+#main-letter .center .middle .body .customer-name {
+  font-weight: 700;
+  text-transform: capitalize;
+}
+#main-letter .center .middle .body p {
+  margin-bottom: 8px;
+  line-height: 140%;
+  display: block;
+}
+
+#main-letter .center .footer {
+  margin-top: 24px;
+}
+#main-letter .center .footer h5 {
+  font-family: "Bradford LL";
+  font-size: 16px;
+  font-style: italic;
+}
+
+#profile-letter {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  width: 100%;
+  /* min-height: 100%; */
+  /* max-width: 618px; */
+  margin: auto;
+  height: 100vh;
+
+  background-color: white;
+}
+#profile-letter.print {
+  max-width: unset;
+}
+#profile-letter .left,
+#profile-letter .right {
+  width: max-content;
+  padding: 20px 8px;
+  font-family: "Bradford LL";
+  font-style: italic;
+  text-transform: capitalize;
+  font-size: 20px;
+  height: 100%;
+  min-height: max-content;
+  text-align: center;
+}
+#profile-letter .left {
+  transform: rotate(180deg);
+  writing-mode: vertical-lr;
+  margin-left: 6px;
+}
+#profile-letter .right {
+  writing-mode: vertical-rl;
+  margin-right: 6px;
+}
+#profile-letter .center {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  border: 1px solid black;
+  border-top: none;
+  border-bottom: none;
+  min-height: 100%;
+  align-items: center;
+}
+#profile-letter .center .header {
+  font-family: "Bradford LL";
+  font-weight: 500;
+  font-size: 32px;
+  text-transform: capitalize;
+  text-align: center;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  padding: 20px 0;
+}
+#profile-letter .center .body {
+  width: 100%;
+}
+
+#profile-letter .progress-container {
+  width: 100%;
+  min-width: 100%;
+  padding: 14px 20px 20px 20px;
+  border-bottom: 1px solid black;
+}
+#profile-letter .progress-container:last-of-type {
+  border-bottom: none;
+}
+
+#profile-letter .progress-container .profile-title h3 {
+  color: #000000;
+  text-align: center;
+  font: italic 30px "Bradford LL";
+  line-height: 40px;
+  margin: 0;
+  margin-bottom: 16px;
+  font-weight: 500;
+}
+
+#profile-letter .progress-container .profile-body {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+#profile-letter .profile-container {
+  width: 45%;
+  margin: 0 0 18px 0;
+}
+#profile-letter .profile-container .title {
+  font: 16px "Necto Mono";
+  color: #231f20;
+  margin-bottom: 8px;
+  display: inline-block;
+}
+#profile-letter .profile-container .progress {
+  width: 100%;
+  height: 6px;
+  border: 1px solid black;
+  border-radius: 1px;
+  text-align: left;
+}
+#profile-letter .profile-container .progress .bar {
+  height: 100%;
+  background-color: black;
+  z-index: 9;
+}
+
+#formula-letter {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  width: 100%;
+  height: 100vh;
+  /* max-width: 618px; */
+  margin: auto;
+  background-color: white;
+}
+#formula-letter.print {
+  max-width: unset;
+}
+#formula-letter .left,
+#formula-letter .right {
+  width: max-content;
+  padding: 20px 8px;
+  font-family: "Bradford LL";
+  font-style: italic;
+  text-transform: capitalize;
+  font-size: 20px;
+  height: 100%;
+  min-height: max-content;
+  text-align: center;
+}
+#formula-letter .left {
+  transform: rotate(180deg);
+  writing-mode: vertical-lr;
+  margin-left: 6px;
+}
+#formula-letter .right {
+  writing-mode: vertical-rl;
+  margin-right: 6px;
+}
+#formula-letter .center {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  border: 1px solid black;
+  border-top: none;
+  border-bottom: none;
+  min-height: 100%;
+  align-items: center;
+}
+#formula-letter .center .header {
+  font-family: "Bradford LL";
+  font-weight: 500;
+  font-size: 32px;
+  text-transform: capitalize;
+  text-align: center;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  padding: 20px 0;
+}
+#formula-letter .center .body {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#formula-letter .center .step {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 8px;
+}
+#formula-letter .center .step div {
+  width: 100%;
+}
+#formula-letter .center .step .title {
+  font-family: "Bradford LL";
+  font-size: 26px;
+  font-style: italic;
+  text-align: left;
+  padding-left: 8px;
+}
+#formula-letter .center .step._two .title {
+  border-bottom: 1px solid black;
+}
+#formula-letter .center .step._two .content {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-auto-rows: 1fr;
+}
+#formula-letter .center .step._two .content .active {
+  border-bottom: 1px solid black;
+}
+#formula-letter .center .step._two .content .active:nth-child(odd) {
+  border-right: 1px solid black;
+}
+#formula-letter .center .step .content {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  flex-grow: 1;
+  font-family: "Necto Mono";
+}
+
+#formula-letter .center .step .content .qrcode {
+  width: max-content;
+  margin-right: 8px;
+  margin-left: 4px;
+}
+#formula-letter .center .step .content .explanation {
+  font-family: "Necto Mono";
+  font-size: 16px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-right: 4px;
+}
+#formula-letter .step._two .name-qrcode {
+  margin-top: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+#formula-letter .step._two .name-qrcode .active-name {
+  padding-left: 8px;
+  font-size: 15px;
+}
+#formula-letter .step._two .description {
+  padding: 8px;
+  font-size: 14px;
+  font-size: 13px;
+  text-transform: capitalize;
+}
+#formula-letter .footer-note {
+  padding: 10px;
+  font-family: "Bradford LL";
+  font-size: 16px;
+  font-style: italic;
+  width: 100%;
+}
+
+#instructions-letter {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  width: 100%;
+  /* max-width: 618px; */
+  margin: auto;
+  background-color: white;
+  height: 100vh;
+}
+#instructions-letter.print {
+  max-width: unset;
+}
+#instructions-letter .left,
+#instructions-letter .right {
+  width: max-content;
+  padding: 20px 8px;
+  font-family: "Bradford LL";
+  font-style: italic;
+  text-transform: capitalize;
+  font-size: 20px;
+  min-height: max-content;
+  text-align: center;
+}
+#instructions-letter .left {
+  transform: rotate(180deg);
+  writing-mode: vertical-lr;
+  margin-left: 6px;
+}
+#instructions-letter .right {
+  writing-mode: vertical-rl;
+  margin-right: 6px;
+}
+#instructions-letter .center {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  border: 1px solid black;
+  border-top: none;
+  border-bottom: none;
+}
+#instructions-letter .center .header {
+  font-family: "Bradford LL";
+  font-weight: 500;
+  font-size: 36px;
+  text-transform: capitalize;
+  text-align: center;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  padding: 20px 0;
+}
+#instructions-letter .section {
+  padding: 8px 10px;
+}
+#instructions-letter .section .sub-header {
+  font-family: "Bradford LL";
+  font-weight: 500;
+  margin-top: 0;
+  font-size: 28px;
+  font-style: italic;
+  text-transform: capitalize;
+  margin-bottom: 8px;
+}
+#instructions-letter .items .list {
+  list-style: none;
+  margin-top: 0;
+  padding-left: 16px;
+  font-family: "Necto Mono";
+  font-size: 15px;
+  line-height: 18px;
+}
+#instructions-letter .items .list li {
+  padding-bottom: 6px;
+}
+#instructions-letter .items .list li ul {
+  margin-top: 6px;
+  padding-left: 3rem;
+}
+
+#instructions-letter .mixing-steps .list {
+  margin-top: 0;
+  padding-left: 56px;
+  padding-right: 16px;
+  font-family: "Necto Mono";
+  font-size: 15px;
+  line-height: 18px;
+}
+#instructions-letter .mixing-steps .list li {
+  padding-bottom: 6px;
+}
+#instructions-letter .notes .list {
+  list-style: disc;
+  margin-top: 0;
+  padding-left: 48px;
+  padding-right: 16px;
+  font-family: "Necto Mono";
+  font-size: 15px;
+  line-height: 18px;
+}

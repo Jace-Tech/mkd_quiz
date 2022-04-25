@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/main_letter.css?v=1.13">
+
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <!-- <script defer>
+    $(document).ready(function() {
+      let divToPrint = document.getElementById('main-letter');
+      let printBtn = document.querySelector(".print-btn");
+      divToPrint.classList.add("print");
+
+      window.print();
+      //window.close();
+    });
+    window.onafterprint = () => {
+      window.close()
+    }
+  </script> -->
+  <title>Main Letter</title>
+</head>
+
+<body>
+  <div id="main-letter">
+    <div class="left">made with you. made for you. made by you. <img src="/image/CreatedBy_Icon_Black_RGB.png" class="logo-svg" width="30px" height="30px"> made with you. made for you. made by you.</div>
+    <div class="center">
+      <div class="top">
+        <div class="header-logo">
+          <span class="cr-logo">CREATED BY</span>
+          <span class="customer-name"><%= it.firstName ? `${it.firstName.trim()}` : "You" %></span>
+        </div>
+      </div>
+      <div class="middle">
+        <div class="header">Welcome to your personalized skincare journey</div>
+        <div class="body">
+          <p><%= it.firstName ? `${it.firstName.trim()}, you ` : 'You ' %>are one of a kind. we believe your skincare should be too.</p>
+          <p>A truly personalized skincare routine is based on science - not buzzwords. That's why our team of scientists, formulators and skincare experts have spent years
+            researching ingredients and analyzing data to provide the best recommendations for your skin.
+          </p>
+          <p>In this box, you'll find additional cards detailing your skin profile, formula and mixing directions to get you started.</p>
+          <p>Each formula is completely personalized using the results from your skin quiz. All that's missing to complete the product, is you.</p>
+          <p>Happy mixing!</p>
+        </div>
+        <div class="footer">
+          <h5>- The Created By ____ team</h5>
+        </div>
+      </div>
+      <div class="bottom"></div>
+    </div>
+    <div class="right">made with you. made for you. made by you. <img src="/image/CreatedBy_Icon_Black_RGB.png" class="logo-svg" width="30px" height="30px"> made with you. made for you. made by you.</div>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,26 @@
+<!-- Sidebar  -->
+<nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>manaknight</h3>
+  </div>
+
+  <ul class="list-unstyled components">
+    <li><a href="/admin/dashboard" class="menu-item <%= it._base_url === '/admin/dashboard' ? 'menu-active':''%>">Dashboard</a></li>
+    <li><a href="/admin/users/0" class="menu-item <%= it._base_url === '/admin/users' ? 'menu-active':''%>">Users</a></li>
+    <li><a href="/admin/orders/0" class="menu-item <%= it._base_url === '/admin/orders' ? 'menu-active':''%>">Orders</a></li>
+    <li><a href="/admin/quizzes/0" class="menu-item <%= it._base_url === '/admin/quizzes' ? 'menu-active':''%>">Quizzes</a></li>
+    <li><a href="/admin/questions/0" class="menu-item <%= it._base_url === '/admin/questions' ? 'menu-active':''%>">Questions</a></li>
+    <li><a href="/admin/answers/0" class="menu-item <%= it._base_url === '/admin/answers' ? 'menu-active':''%>">Answers</a></li>
+    <li><a href="/admin/rules/0" class="menu-item <%= it._base_url === '/admin/rules' ? 'menu-active':''%>">Rules</a></li>
+    <li><a href="/admin/actives/0" class="menu-item <%= it._base_url === '/admin/actives' ? 'menu-active':''%>">Actives</a></li>
+    <li><a href="/admin/output-variables/0" class="menu-item <%= it._base_url === '/admin/output-variables' ? 'menu-active':''%>">Output variables</a></li>
+    <li><a href="/admin/profile-sections/0" class="menu-item <%= it._base_url === '/admin/profile-sections' ? 'menu-active':''%>">Profile sections</a></li>
+    <li><a href="/admin/profile" class="menu-item <%= it._base_url === '/admin/profile' ? 'menu-active':''%>">Profile</a></li>
+    <li><a href="/admin/logout" class="menu-item <%= it._base_url === '/admin/logout' ? 'menu-active':''%>">Logout</a></li>
+  </ul>
+
+  <div class="ml-3 d-none">
+    <span class="copyright">Copyright © 2021 manaknight. All rights reserved.</span>
+    <span class="copyright">Powered By <a href="https://manaknight.com" target="__blank">manaknight.</a></span>
+  </div>
+</nav>

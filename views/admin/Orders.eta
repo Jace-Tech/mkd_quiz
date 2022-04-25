@@ -1,0 +1,207 @@
+<% if(it.layout_clean_mode) {%>
+<% layout("../layouts/admin/Clean") %>
+<% } else {%>
+<% layout("../layouts/admin/Main") %>
+<%}%>
+
+
+<div class="tab-content mx-4 my-4" id="nav-tabContent">
+
+<%~ includeFile("../partials/admin/GlobalResponse.eta", it) %>
+
+<section>
+  <div class="row">
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+      <div class="card" id="orders_filter_listing">
+        <div class="card-body">
+          <h5 class="primaryHeading2 text-md-left">
+            <%= it.get_heading() %> Search
+          </h5>
+          <form action="/admin/orders/0" method="get" accept-charset="utf-8">
+            <div class="row">
+
+              <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
+
+                <div class="form-group">
+
+                  <label for="ID">ID</label>
+
+                  <input type="text" class="form-control" id="id" name="id" value="<%= it.get_id() %>" />
+
+                </div>
+
+              </div>
+
+              <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
+
+                <div class="form-group">
+
+                  <label for="Customer">Customer</label>
+
+                  <input type="text" class="form-control" id="customer_shopify_id" name="customer_shopify_id" value="<%= it.get_customer_shopify_id() %>" />
+
+                </div>
+
+              </div>
+
+              <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
+
+                <div class="form-group">
+
+                  <label for="Order shopify id">Order shopify id</label>
+
+                  <input type="text" class="form-control" id="shopify_id" name="shopify_id" value="<%= it.get_shopify_id() %>" />
+
+                </div>
+
+              </div>
+
+              <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
+
+                <div class="form-group">
+
+                  <label for="Financial status">Financial status</label>
+
+                  <input type="text" class="form-control" id="financial_status" name="financial_status" value="<%= it.get_financial_status() %>" />
+
+                </div>
+
+              </div>
+
+              <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
+
+                <div class="form-group">
+
+                  <label for="Fulfillment status">Fulfillment status</label>
+
+                  <input type="text" class="form-control" id="fulfillment_status" name="fulfillment_status" value="<%= it.get_fulfillment_status() %>" />
+
+                </div>
+
+              </div>
+
+              <div style="width:100%;height:10px;display:block;float:none;"></div>
+              <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
+                <div class="form-group">
+                  <input type="submit" name="submit" class="btn btn-primary" value="Search">
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+</section>
+
+
+
+<div class="d-flex align-items-center justify-content-between">
+  <h5 class="primaryHeading2 d-flex justify-content-between mt-2 my-4">
+    <%= it.get_heading() %>
+  </h5>
+
+  <div class="d-flex align-items-center">
+
+
+    <span class="d-none ml-1"></span>
+  </div>
+</div>
+
+
+<section class="table-placeholder bg-white mb-5 p-3 pl-4 pr-4 pt-4" style='height:auto;'>
+  <div class="mb-2 d-flex align-items-center justify-content-between d-none">
+    <div>
+      <small class="d-flex align-items-baseline">
+        Show <select name="page_length" class="form-control form-control-sm mx-2" style="max-width: 60px;" onchange="window.location='0?per_page='+this.value">
+          <option <%= it.get_per_page() == 10 ? 'selected' : '' %>>10</option>
+          <option <%= it.get_per_page() == 25 ? 'selected' : '' %>>25</option>
+          <option <%= it.get_per_page() == 50 ? 'selected' : '' %>>50</option>
+          <option <%= it.get_per_page() == 100 ? 'selected' : '' %>>100</option>
+        </select>
+        entries
+      </small>
+    </div>
+
+    <div class="d-flex align-items-center">
+
+    </div>
+  </div>
+  <div class="table-responsive">
+    <table class="table table-mh br w-100 table-bordered table-striped">
+      <thead class='thead-white text-nowrap'>
+
+        <% it.get_column().forEach(function(data, index) { %>
+        <% if (it.get_order_by().length < 1 || it.get_field_column()[index] == '' || it.get_field_column()[index] == undefined) { %>
+        <th scope="col" class="paragraphText text-left"><%= data %></th>
+        <% } else { %>
+        <th scope='col' class='paragraphText text-left'>
+          <a class="text-dark" href="<%= `${it.get_sort_base_url()}?order_by=${it.get_field_column()[index]}&direction=${it.get_sort() == 'DESC' ? 'ASC' : 'DESC'}` %>"><%= data %>
+            <span class="order-arrows">
+              <i style="margin-top: 0.45rem;float:right;font-size: small; color: #aaa;<%~ it.get_field_column()[index] == it.get_order_by() && it.get_sort() == 'DESC' ? 'color:black !important;' : ''%>" class="fas fa-long-arrow-alt-down"></i>
+              <i style="margin-top: 0.45rem;float:right;font-size: small; color: #aaa;<%~ it.get_field_column()[index] == it.get_order_by() && it.get_sort() == 'ASC' ? 'color:black !important;' : ''%>" class="fas fa-long-arrow-alt-up"></i>
+            </span>
+          </a>
+        </th>
+        <% } %>
+        <% }) %>
+      </thead>
+      <tbody class="tbody-light">
+        <% it.get_list().forEach(function(data) { %>
+        <tr>
+
+
+          <td>
+            <%= data.id %>
+          </td>
+
+
+
+          <td>
+            <%= data.shopify_id %>
+          </td>
+
+
+
+          <td>
+            <% if(data.customer){ %>
+            id: <%= JSON.parse(data.customer).id %></br>
+            email: <%= JSON.parse(data.customer).email %>
+
+            <% } else { %>
+            N/A
+            <% } %>
+          </td>
+
+
+
+          <td>
+            <%= data.financial_status ?? "N/A" %>
+          </td>
+
+
+
+          <td>
+            <%= data.fulfillment_status ?? "N/A" %>
+          </td>
+
+          <td>
+            <%= data.created_at? it.date(data.created_at) : "N/A" %>
+          </td>
+
+          <td>
+            <a class="btn btn-link  link-underline text-underline  btn-sm" target="_blank" href="/admin/letters/all?order=<%= data.id %>">Print All</a>
+            <a class="btn btn-link  link-underline text-underline  btn-sm" target="_blank" href="/admin/letters/main?order=<%= data.id %>">Main</a>
+            <a class="btn btn-link  link-underline text-underline  btn-sm" target="_blank" href="/admin/letters/profile?order=<%= data.id %>">Profile</a>
+            <a class="btn btn-link  link-underline text-underline  btn-sm" target="_blank" href="/admin/letters/formula?order=<%= data.id %>">Formula</a>
+            <a class="btn btn-link  link-underline text-underline  btn-sm" target="_blank" href="/admin/letters/instructions?order=<%= data.id %>">Instructions</a>
+          </td>
+
+
+        </tr>
+        <% }) %>
+      </tbody>
+    </table>
+    <p class="pagination_custom"><%~ it.get_links() %></p>
+  </div>
+</section>
+</div>

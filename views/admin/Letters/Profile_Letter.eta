@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/profile_letter.css?v=1.13">
+
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <!-- <script defer>
+    $(document).ready(function() {
+      let divToPrint = document.getElementById('profile-letter');
+      let printBtn = document.querySelector(".print-btn");
+      divToPrint.classList.add("print");
+
+      window.print();
+    });
+    window.onafterprint = () => {
+      window.close()
+    }
+  </script> -->
+  <title>Profile Letter</title>
+</head>
+
+<body>
+
+  <div id="profile-letter">
+    <div class="left">made with you. made for you. made by you. <img src="/image/CreatedBy_Icon_Black_RGB.png" class="logo-svg" width="30px" height="30px"> made with you. made for you. made by you.</div>
+    <div class="center">
+      <div class="header">
+        <span class="username"><%= it.firstName ? `${it.firstName.trim()}'s` : "Your" %></span> skin profile
+      </div>
+      <div class="body">
+        <% if(it.profileCharcteristics) { %>
+        <% Object.entries(it.profileCharcteristics).forEach(([name, values])=>{%>
+        <div class="progress-container">
+          <div class="profile-title">
+            <h3><%= name %></h3>
+          </div>
+          <div class="profile-body">
+            <% if(values && values.length) { %>
+            <% values?.forEach(profile => { %>
+            <div class="profile-container">
+              <div class="title">
+                <%= profile.name %>
+              </div>
+              <div class="progress">
+                <div class="bar" style="width: <%= parseFloat(profile.percentage).toFixed(2) %>%"></div>
+              </div>
+            </div>
+            <% }) %>
+            <% }%>
+          </div>
+        </div>
+        <%})%>
+        <% }%>
+      </div>
+    </div>
+    <div class="right">made with you. made for you. made by you. <img src="/image/CreatedBy_Icon_Black_RGB.png" class="logo-svg" width="30px" height="30px"> made with you. made for you. made by you.</div>
+  </div>
+</body>
+
+</html>

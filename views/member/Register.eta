@@ -1,0 +1,107 @@
+
+<% layout("../layouts/member/Clean") %>
+
+
+  <section>
+        <div class="row">
+            <div class="col-lg-3 col-md-3 col-sm-1 col-xs-1"></div>
+            <div class="col-lg-6 col-md-6 col-sm-10 col-xs-10 p-5 auth-wrap">
+                <div class='text-center'>
+                    <h1>Register</h1>
+                </div>
+                <div class="form-container form-container-auth ">
+                    <%~ includeFile("../partials/admin/GlobalResponse.eta", it) %>
+                    <form action="/member/register" method="POST">
+                        <div class="form-group required">
+                            <label class='control-label' for="first name">First Name</label>
+                            <input type="text" required class="form-control site-input" name="first_name" required="true" autofocus="true" value="<%= it.register_fields.first_name%>">
+                            <% if(it.validationError){ %>
+                                <% if(it.validationError.first_name){ %>
+                                    <div class="alert alert-danger my-4" role="alert">
+                                        <%= it.validationError.first_name  %>
+                                    </div>
+                                <%}%>
+                            <%}%>
+                        </div>
+                        <div class="form-group required">
+                            <label class='control-label' for="last name">Last Name</label>
+                            <input type="text" required class="form-control site-input" name="last_name" required="true" value="<%= it.register_fields.last_name%>">
+                             <% if(it.validationError){ %>
+                                <% if(it.validationError.last_name){ %>
+                                    <div class="alert alert-danger my-4" role="alert">
+                                        <%= it.validationError.last_name  %>
+                                    </div>
+                                <%}%>
+                            <%}%>
+                        </div>
+                        <div class="form-group required">
+                            <label class='control-label' for="email address">Email address</label>
+                            <input type="email" required class="form-control site-input"  name="email" required="true" value="<%= it.register_fields.email%>">
+
+                            <% if(it.validationError){ %>
+                                <% if(it.validationError.email){ %>
+                                    <div class="alert alert-danger my-4" role="alert">
+                                        <%= it.validationError.email  %>
+                                    </div>
+                                <%}%>
+                            <%}%>
+                        </div>
+                        <div class="form-group required">
+                            <label class='control-label' for="password">Password</label>
+                            <input type="password" required class="form-control site-input"  name="password" required="true">
+
+                               <% if(it.validationError){ %>
+                                <% if(it.validationError.password){ %>
+                                    <div class="alert alert-danger my-4" role="alert">
+                                        <%= it.validationError.password  %>
+                                    </div>
+                                <%}%>
+                            <%}%>
+                        </div>
+                        <div class="form-group required">
+                            <label class='control-label' for="password">Repeat Password</label>
+                            <input type="password" required class="form-control site-input"  name="confirm_password" required="true">
+
+                            <% if(it.validationError){ %>
+                                <% if(it.validationError.confirm_password){ %>
+                                    <div class="alert alert-danger my-4" role="alert">
+                                        <%= it.validationError.confirm_password  %>
+                                    </div>
+                                <%}%>
+                            <%}%>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                    </form>
+                  
+<div class="text-center mt-3">
+<span> OR </span>
+</div>
+
+ <div class="form-group mt-3">
+        <a href="<%= it.google_auth_url%>" class="btn btn-accent-light-outline btn-sign-up google-button" >
+<i class="fab fa-google" aria-hidden="true"></i>&nbsp;
+ Login with Google</a>
+ </div>
+ <div class="form-group mt-3">
+        <a href="<%= it.facebook_auth_url%>" class="btn btn-accent-light-outline btn-sign-up facebook-button" > 
+<i class="fab fa-facebook" aria-hidden="true"></i>&nbsp;
+ Login with Facebook</a>
+ </div>
+
+                  <div class="text-center mt-4">
+<span>Already have an account?
+          <a href="/member/login">Login</a>
+ </span>
+</div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-1 col-xs-1"></div>
+        </div>
+    </section>   
+
+<div class='text-center'> 
+    <p>Copyright © 2021 Manaknightdigital Inc. All rights reserved.</p>
+
+    <p>Powered By <a href="https://manaknightdigital.com" target="__blank">Manaknightdigital Inc.</a></p>
+</div>

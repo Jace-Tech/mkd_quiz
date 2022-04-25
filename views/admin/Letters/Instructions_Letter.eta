@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- <link rel="stylesheet" href="/css/styles.css" /> -->
+  <link rel="stylesheet" href="/css/instructions_letter.css?v=1.13">
+
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+  <!-- <script defer>
+    $(document).ready(function() {
+      let divToPrint = document.getElementById('instructions-letter');
+      let printBtn = document.querySelector(".print-btn");
+      divToPrint.classList.add("print");
+
+      window.print();
+    });
+    window.onafterprint = () => {
+      window.close()
+    }
+  </script> -->
+  <title>Instructions Letter</title>
+</head>
+
+<body>
+  <div id="instructions-letter">
+    <div class="left">made with you. made for you. made by you. <img src="/image/CreatedBy_Icon_Black_RGB.png" class="logo-svg" width="30px" height="30px"> made with you. made for you. made by you.</div>
+    <div class="center">
+      <div class="header">
+        Instructions
+      </div>
+      <div class="items section">
+        <h3 class="sub-header">Items included:</h3>
+        <ul class="list">
+          <li>(1) Jar with Base Cream</li>
+          <li>
+            (1) Bag Containing:
+            <ul>
+              <li>
+                (10) Actives Sachets
+              </li>
+              <li>
+                (1) Wooden Mixing Stick
+              </li>
+              <li>
+                (1) Marker
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div class="mixing-steps section">
+        <h3 class="sub-header">Step 3: Mixing Your Formula</h3>
+        <ol class="list">
+          <li>Open your jar of base cream.</li>
+          <li>Carefully empty all 10 sachets into your base cream.</li>
+          <li>Gently mix the base and sachet contents with the wooden mixing stick until a consistent color and texture is achieved.</li>
+          <li>Optional: Customize your jar using the included marker.</li>
+        </ol>
+      </div>
+      <div class="notes section">
+        <h3 class="sub-header">* Things to make note of:</h3>
+        <ul class="list">
+          <li>Your formula may include sachets labeled "Blank." These contain supplementary base meant to balance the final volume and active concentrations.</li>
+          <li>Actives may have some varying colors or scents coming from their natural plantsources.</li>
+          <li>If cream separation occurs, simply remix gently.</li>
+          <li>Do not throw out jar when done. All future orders will arrive in a refill pod.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="right">made with you. made for you. made by you. <img src="/image/CreatedBy_Icon_Black_RGB.png" class="logo-svg" width="30px" height="30px"> made with you. made for you. made by you.</div>
+  </div>
+</body>
+
+</html>

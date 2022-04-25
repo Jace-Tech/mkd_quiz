@@ -1,0 +1,126 @@
+@media only screen and (max-height: 580px) {
+  #page1 .secondRow {
+    height: auto;
+  }
+}
+@media only screen and (max-width: 992px) {
+  #page1 .main-image-container {
+    display: none;
+  }
+  #page1 .columns {
+    width: 100%;
+    margin-left: 0;
+    padding: 0 8px;
+  }
+  #page1 .firstRow {
+    height: 100px;
+  }
+  #page1 .secondRow {
+    height: auto;
+  }
+  #page1 .secondRow .heading {
+    font-size: 40px;
+    margin-bottom: 48px;
+  }
+  #page1 .secondRow .para {
+    margin-bottom: 56px;
+    font-size: 15px;
+  }
+  #page1 .secondRow .beginButton {
+    font-size: 11px;
+  }
+  #page2 h4 {
+    font-size: 24px;
+  }
+  #page2 h1 {
+    font-size: 36px;
+  }
+  .progressBar .progressColumns p {
+    font-size: 10px;
+  }
+  #page3 .questionRow h1 {
+    font-size: 36px;
+    line-height: 56px;
+    padding: 0 8px;
+  }
+  .answerInner.typeText input,
+  .answerInner.typeNum input {
+    font-size: 16px;
+  }
+  #page4 .createdByDiv,
+  .createdByDiv {
+    font-size: 10px;
+  }
+  .noteRow {
+    margin-bottom: 10vh;
+  }
+  #page3 .questionRow.mtb {
+    padding: 24px 0;
+  }
+  #page3 .noteRow {
+    flex-direction: column;
+    margin-bottom: 10vh;
+  }
+  #page3 .noteRow .noteTitle {
+    border: 1px solid #101010 !important;
+    border-top: none !important;
+  }
+  #page3 .noteRow .noteTitle h4 {
+    font-size: 12px;
+    margin: 8px 0;
+  }
+  #page3 .noteRow .noteDesc {
+    border: 1px solid #101010 !important;
+    border-top: none !important;
+  }
+  #page3 .noteRow .noteDesc p {
+    margin: 8px 0;
+    font-size: 13px;
+    text-align: center;
+  }
+  .multiBtns {
+    font-size: 12px;
+    padding: 14px 10px;
+  }
+  #page3 .noteRow.image-below {
+    margin-bottom: 5vh !important;
+  }
+  #page3 .questionRow.mtb.no-note {
+    margin-bottom: 8vh !important;
+  }
+  #page3 .questionRow.mtb.no-note.no-image {
+    margin-bottom: 16vh !important;
+  }
+  #page3 .answerRow {
+    margin-top: 24px;
+  }
+  #page4 .headerRow,
+  .headerRow {
+    height: 50px;
+  }
+  .sliderDiv {
+    margin: 32px auto 8px auto;
+    width: 90%;
+  }
+  #typeGeo .answerInner input {
+    font-size: 16px;
+  }
+  #weatherApi .header {
+    text-align: center;
+  }
+  #page5 .responseRow .responseInner .responseBody p {
+    padding: 0 8px;
+  }
+  .control-arrows img {
+    width: 15px;
+  }
+  .sliderRanges .ranges {
+    font-size: 12px;
+  }
+  #page5 .responseRow .responseInner .responseHead h1 {
+    font-size: 36px;
+  }
+  #page5 .responseRow .responseInner .responseBody p {
+    font-size: 13px;
+  }
+}

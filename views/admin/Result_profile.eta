@@ -1,0 +1,144 @@
+<% if(it.layout_clean_mode) {%>
+<% layout("../layouts/admin/Clean") %>
+<% } else {%>
+<% layout("../layouts/admin/Main") %>
+<%}%>
+
+
+<div class="tab-content mx-4 my-4" id="nav-tabContent">
+
+<%~ includeFile("../partials/admin/GlobalResponse.eta", it) %>
+
+<section>
+  <div class="row">
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+      <div class="card" id="result_profile_filter_listing">
+        <div class="card-body">
+          <h5 class="primaryHeading2 text-md-left">
+            <%= it.get_heading() %> Search
+          </h5>
+          <form action="/admin/profile-sections/0" method="get" accept-charset="utf-8">
+            <div class="row">
+
+              <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
+
+                <div class="form-group">
+
+                  <label for="ID">ID</label>
+
+                  <input type="text" class="form-control" id="id" name="id" value="<%= it.get_id() %>" onkeypress="return event.charCode >= 48 && event.charCode <= 57" />
+
+                </div>
+
+              </div>
+
+              <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
+
+                <div class="form-group">
+
+                  <label for="Section title">Section title</label>
+
+                  <input type="text" class="form-control" id="section_title" name="section_title" value="<%= it.get_section_title() %>" />
+
+                </div>
+
+              </div>
+
+              <div style="width:100%;height:10px;display:block;float:none;"></div>
+              <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
+                <div class="form-group">
+                  <input type="submit" name="submit" class="btn btn-primary" value="Search">
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+</section>
+
+
+
+<div class="d-flex align-items-center justify-content-between">
+  <h5 class="primaryHeading2 d-flex justify-content-between mt-2 my-4">
+    <%= it.get_heading() %>
+  </h5>
+
+  <div class="d-flex align-items-center">
+
+
+    <span class="add-part d-flex justify-content-md-end   ml-1"><a class="btn btn-primary btn-sm" target="__blank" href="/admin/profile-sections-add"><i class="fas fa-plus-circle"></i></a></span>
+  </div>
+</div>
+
+
+<section class="table-placeholder bg-white mb-5 p-3 pl-4 pr-4 pt-4" style='height:auto;'>
+  <div class="mb-2 d-flex align-items-center justify-content-between d-none">
+    <div>
+      <small class="d-flex align-items-baseline">
+        Show <select name="page_length" class="form-control form-control-sm mx-2" style="max-width: 60px;" onchange="window.location='0?per_page='+this.value">
+          <option <%= it.get_per_page() == 10 ? 'selected' : '' %>>10</option>
+          <option <%= it.get_per_page() == 25 ? 'selected' : '' %>>25</option>
+          <option <%= it.get_per_page() == 50 ? 'selected' : '' %>>50</option>
+          <option <%= it.get_per_page() == 100 ? 'selected' : '' %>>100</option>
+        </select>
+        entries
+      </small>
+    </div>
+
+    <div class="d-flex align-items-center">
+
+    </div>
+  </div>
+  <div class="table-responsive">
+    <table class="table table-mh br w-100 table-bordered table-striped">
+      <thead class='thead-white text-nowrap'>
+
+        <% it.get_column().forEach(function(data, index) { %>
+        <% if (it.get_order_by().length < 1 || it.get_field_column()[index] == '' || it.get_field_column()[index] == undefined) { %>
+        <th scope="col" class="paragraphText text-left"><%= data %></th>
+        <% } else { %>
+        <th scope='col' class='paragraphText text-left'>
+          <a class="text-dark" href="<%= `${it.get_sort_base_url()}?order_by=${it.get_field_column()[index]}&direction=${it.get_sort() == 'DESC' ? 'ASC' : 'DESC'}` %>"><%= data %>
+            <span class="order-arrows">
+              <i style="margin-top: 0.45rem;float:right;font-size: small; color: #aaa;<%~ it.get_field_column()[index] == it.get_order_by() && it.get_sort() == 'DESC' ? 'color:black !important;' : ''%>" class="fas fa-long-arrow-alt-down"></i>
+              <i style="margin-top: 0.45rem;float:right;font-size: small; color: #aaa;<%~ it.get_field_column()[index] == it.get_order_by() && it.get_sort() == 'ASC' ? 'color:black !important;' : ''%>" class="fas fa-long-arrow-alt-up"></i>
+            </span>
+          </a>
+        </th>
+        <% } %>
+        <% }) %>
+      </thead>
+      <tbody class="tbody-light">
+        <% it.get_list().forEach(function(data) { %>
+        <tr>
+
+
+          <td>
+            <%= data.id %>
+          </td>
+
+
+
+          <td>
+            <%= data.section_title %>
+          </td>
+
+
+
+          <td>
+            <% data.output_variable_list?.forEach(ovar => { %>
+            <%= ovar %></br>
+            <%}) %>
+          </td>
+
+
+          <td><a class="btn btn-link  link-underline text-underline  btn-sm" target="_self" href="/admin/profile-sections-view/<%= data.id %>">View</a>&nbsp;<a target="_self" class="btn btn-link  link-underline text-underline  btn-sm" href="/admin/profile-sections-edit/<%= data.id %>">Edit</a>&nbsp;<a class="btn btn-link  link-underline text-underline text-danger btn-sm" href="/admin/profile-sections-delete/<%= data.id %>">Delete</a>&nbsp;</td>
+        </tr>
+        <% }) %>
+      </tbody>
+    </table>
+    <p class="pagination_custom"><%~ it.get_links() %></p>
+  </div>
+</section>
+</div>

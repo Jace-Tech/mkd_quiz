@@ -1,0 +1,49 @@
+
+<% layout("../layouts/member/Clean") %>
+
+ 
+ <section>
+        <div class="row">
+            <div class="col-lg-3 col-md-3 col-sm-1 col-xs-1"></div>
+            <div class="col-lg-6 col-md-6 col-sm-10 col-xs-10 p-5 auth-wrap">
+                <div class='text-center'>
+                    <h1>Reset Password</h1>
+                </div>
+                <div class="form-container form-container-auth">
+                    <%~ includeFile("../partials/admin/GlobalResponse.eta", it) %>
+                     <form action="/member/reset/<%= it.resetToken%>" method='POST'>
+			            <div class="form-group required">
+			        	    <label class='required' for="reset-password">Password</label>
+			        	    <input name="password" required type="password" class="form-control site-input"  required="true" id="reset-password">
+                            <% if(it.validationError){ %>
+                                <% if(it.validationError.password){ %>
+                                    <div class="alert alert-danger my-4" role="alert">
+                                        <%= it.validationError.password  %>
+                                    </div>
+                                <%}%>
+                            <%}%>
+                        </div>
+                        <div class="form-group required text-container">
+                            <label class='control-label' for="confirm-password">Confirm Password</label>
+                            <input name="confirm_password" required type="password" class="form-control site-input"  required="true" id="confirm-password">
+                             <% if(it.validationError){ %>
+                                <% if(it.validationError.confirm_password){ %>
+                                    <div class="alert alert-danger my-4" role="alert">
+                                        <%= it.validationError.confirm_password  %>
+                                    </div>
+                                <%}%>
+                            <%}%>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" name='btn-login' class="btn btn-accent-light btn-block btn-primary" value="Reset">
+                        </div>
+                    </form>
+
+                <div class="form-group mt-3 d-flex justify-content-center">
+                    <a href="/member/login" id="mkd-forgot-password-link">Back to Login</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-1 col-xs-1"></div>
+    </div>
+</section>

@@ -1,0 +1,93 @@
+<% if(it.layout_clean_mode) {%> <% layout("../layouts/admin/Clean", {get_page_name:()=> "Dashboard"}) %><% } else {%> <% layout("../layouts/admin/Main",{get_page_name:()=> "Dashboard"}) %><%}%>
+
+<style>
+  .draggable-list {
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    padding: 0;
+    list-style-type: none;
+  }
+
+  .draggable-list li {
+    background-color: #fff;
+    display: flex;
+    flex: 1;
+  }
+
+  .draggable-list li:not(:last-of-type) {
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .draggable-list .number {
+    background-color: var(--background-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    height: 60px;
+    width: 60px;
+  }
+
+  .draggable-list li.over .draggable {
+    background-color: #eaeaea;
+  }
+
+  .draggable-list .qustion-text {
+    margin: 0 20px 0 0;
+  }
+
+  .draggable-list li.right .qustion-text {
+    color: #3ae374;
+  }
+
+  .draggable-list li.wrong .qustion-text {
+    color: #ff3838;
+  }
+
+  .draggable {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+    flex: 1;
+  }
+
+  .check-btn {
+    border: none;
+    font-size: 16px;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+
+  .check-btn:active {
+    transform: scale(0.98);
+  }
+
+  .check-btn:focus {
+    outline: none;
+  }
+  .draggable-list li {
+    margin-bottom: 8px;
+    box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+  }
+  .question-text {
+    margin-bottom: 0;
+  }
+</style>
+
+<div class="tab-content mx-2 my-2 mx-lg-4 my-lg-4 bg-white p-3" id="nav-tabContent">
+  <div id="main-image" class="mb-4 col-12 col-xl-8 col-lg-10 px-0">
+    <div class="form-group col-12 px-0">
+      <label for="image" class="control-label">Main screen image</label>
+
+      <img id="media_image" src="<%= it.config.image?.url ?? '' %>" class="mb-3" style="width: 100%; height: 500px; object-fit: contain; background: #00000010; border-radius: 8px" />
+
+<button id="button_file_image" type="button" class="btn btn-outline-primary btn-block mkd-uppload-image-button data-input" data-upload-for="image">Upload</button>
+<input id="file_image" name="image" type="text" hidden value="<%= it.config.image?.url ?? '' %>" class="form-control-file" />
+</div>
+<a class="btn btn-primary text-white w-100" onclick="updateMainPicture(this, event)" id="submit-btn">Update image</a>
+</div>
+<div id="order-container" class="mb-4 col-12 col-xl-8 col-lg-10 px-0"></div>
+<a class="btn btn-primary text-white" onclick="submitChanges(this, event)" id="submit-btn">Submit changes</a>
+</div>

@@ -1,0 +1,98 @@
+<% if(it.layout_clean_mode) {%>
+<% layout("../layouts/admin/Clean") %>
+<% } else {%>
+<% layout("../layouts/admin/Main") %>
+<%}%>
+
+<%~ includeFile("../partials/admin/Breadcrumb", it)%>
+
+<div class="tab-content mx-4 my-4">
+  <div class="row">
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+      <%~ includeFile("../partials/admin/GlobalResponse.eta", it) %>
+      <div class="form-container card p-4">
+        <h5 class="primaryHeading2 mb-4 text-md-left pl-3">
+          <%= it.heading %>
+        </h5>
+
+        <form action="/admin/output-variables-edit/<%= it.outputVariable['id'] %>" method="POST">
+
+
+          <div class="form-group required col-md-10 col-12 ">
+            <label for="name" class="control-label">Name</label>
+
+
+            <input type="text" required class="form-control data-input" id="text_name" name="name" value="<%= it.outputVariable['name'] %>" />
+
+
+          </div>
+
+          <div class="form-group col-md-10 col-12 ">
+            <label for="active_list" class="control-label">Actives list</label>
+
+            <small class="text-muted">Can select multiple</small>
+            <select class="selectpicker custom-picker d-block w-100" data-style="btn-light" data-live-search="true" id="active_list_select" name="active_list" multiple size="<%= it.actives?.length ?? 5 %>" style="height: 100%;">
+              <% it.actives.forEach(function(active) { %>
+              <option class="select_mapping_status_option" value="<%= active.id %>" <%= it.outputVariable.active_list ? (JSON.parse(it.outputVariable.active_list).indexOf(`${active.id}`) > -1 ? 'selected' : '') : '' %>>
+                <%= active.name %>
+              </option>
+              <% }) %>
+            </select>
+
+          </div>
+
+          <div class="form-group col-md-10 col-12 " id="ranges-responses-container">
+            <label for="ranges_response" class="control-label">Ranges responses</label>
+
+            <% if(it.outputVariable['ranges_response'] && JSON.parse(it.outputVariable['ranges_response']).length) {%>
+            <% JSON.parse(it.outputVariable['ranges_response']).forEach((rr,index) => { %>
+            <div class="d-flex flex-row col-12 px-0 align-items-end" data-box-id="<%= index %>">
+              <div class="form-group col-2 pl-0">
+                <label for="range_<%= index %>" class="control-label">Range</label>
+                <input type="text" class="form-control data-input" id="text_range_<%= index %>" name="ranges" value="<%= Object.keys(rr)[0] %>" />
+              </div>
+              <div class="form-group col-8 pl-0">
+                <label for="response_<%= index %>" class="control-label">Response</label>
+                <input type="text" class="form-control data-input" id="text_response_<%= index %>" name="responses" value="<%= rr[Object.keys(rr)[0]] %>" />
+              </div>
+              <button type="button" onclick="addRangeResponse(event, this)" class="form-group my-0 col-2 btn btn-primary mb-3 mx-1" style="height:max-content;height:-moz-max-content" data-next="1">
+                Add
+              </button>
+              <% if(index > 0){ %>
+              <button type="button" onclick="removeRange(event, this)" class="form-group my-0 col-2 btn btn-danger mb-3 mx-1" style="height:max-content;height:-moz-max-content" data-box-id="<%= index %>">
+                Del
+              </button>
+              <% } %>
+            </div>
+            <% }) %>
+            <% } else { %>
+            <div class="d-flex flex-row col-12 px-0 align-items-end" data-box-id="0">
+              <div class="form-group col-2 pl-0">
+                <label for="range_0" class="control-label">Range</label>
+                <input type="text" class="form-control data-input" id="range_0" placeholder="0-20" name="ranges" value="" />
+              </div>
+              <div class="form-group col-6 pl-0">
+                <label for="response_0" class="control-label">Response</label>
+                <input type="text" class="form-control data-input" id="response_0" placeholder="Response to accumlated weight between 0% and 20%" name="responses" value="" />
+              </div>
+              <button type="button" onclick="addRangeResponse(event, this)" class="form-group my-0 col-2 btn btn-primary mb-3 mx-1" style="height:max-content;height:-moz-max-content" data-next="1">
+                Add
+              </button>
+            </div>
+            <% } %>
+
+          </div>
+
+
+          <div class="form-group pl-3">
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script src="/js/add-output-variable.js"></script>

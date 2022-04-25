@@ -1,0 +1,13 @@
+<!-- Bread Crumb -->
+<div aria-label="breadcrumb">
+    <ol class="breadcrumb pl-0 <%= it.breadcrumbs ? 'mb-4' : 'mb-0 p-0' %> bg-background d-flex justify-content-center justify-content-md-start">
+
+    <% if (it.breadcrumbs){%>
+        <% for (let item of it.breadcrumbs) {%>
+        <li class="breadcrumb-item <%= item.active ? 'breadcrumb-active' : '' %>" aria-current="page">
+            <a href="<%= item.link %>" class="breadcrumb-link"><%= item.name %></a>
+        </li> 
+        <% } %>
+    <%}%>
+    </ol>
+</div>

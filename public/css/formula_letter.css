@@ -1,0 +1,197 @@
+* {
+  box-sizing: border-box;
+}
+@font-face {
+  font-family: "TT Nooks Script";
+  src: url("/fonts/TTNooksScript-Bold.woff2") format("woff2"), url("/fonts/TTNooksScript-Bold.woff") format("woff");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Bradford LL";
+  src: url("/fonts/BradfordLL-Regular.woff2") format("woff2"), url("/fonts/BradfordLL-Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Bradford LL";
+  src: url("/fonts/BradfordLL-Italic.woff2") format("woff2"), url("/fonts/BradfordLL-Italic.woff") format("woff");
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Necto Mono";
+  src: url("/fonts/Necto-Mono.woff2") format("woff2"), url("/fonts/Necto-Mono.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Debrovnik Hill Italic";
+  src: url("/fonts/Debrovnik Hill Italic.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Debrovnik Hill Reguler";
+  src: url("/fonts/Debrovnik Hill Reguler.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "rotation-roman";
+  src: url("/fonts/RotationLTStd-Roman.otf") format("opentype");
+}
+
+html {
+  height: 100%;
+}
+body {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  -webkit-print-color-adjust: exact;
+}
+.logo-svg {
+  transform: rotate(90deg);
+  margin: 10px;
+}
+#formula-letter {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  width: 100%;
+  min-height: 100%;
+  /* max-width: 618px; */
+  margin: auto;
+  background-color: white;
+}
+#formula-letter.print {
+  max-width: unset;
+}
+#formula-letter .left,
+#formula-letter .right {
+  width: max-content;
+  padding: 20px 8px;
+  font-family: "Bradford LL";
+  font-style: italic;
+  text-transform: capitalize;
+  font-size: 20px;
+  height: 100%;
+  min-height: max-content;
+  text-align: center;
+}
+#formula-letter .left {
+  transform: rotate(180deg);
+  margin-left: 6px;
+  writing-mode: vertical-lr;
+}
+#formula-letter .right {
+  margin-right: 6px;
+  writing-mode: vertical-rl;
+}
+#formula-letter .center {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  border: 1px solid black;
+  border-top: none;
+  border-bottom: none;
+  min-height: 100%;
+  align-items: center;
+}
+#formula-letter .center .header {
+  font-family: "Bradford LL";
+  font-weight: 500;
+  font-size: 32px;
+  text-transform: capitalize;
+  text-align: center;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  padding: 20px 0;
+}
+#formula-letter .center .body {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#formula-letter .center .step {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 8px;
+}
+#formula-letter .center .step div {
+  width: 100%;
+}
+#formula-letter .center .step .title {
+  font-family: "Bradford LL";
+  font-size: 26px;
+  font-style: italic;
+  text-align: left;
+  padding-left: 8px;
+}
+#formula-letter .center .step._two .title {
+  border-bottom: 1px solid black;
+}
+#formula-letter .center .step._two .content {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-auto-rows: 1fr;
+}
+#formula-letter .center .step._two .content .active {
+  border-bottom: 1px solid black;
+}
+#formula-letter .center .step._two .content .active:nth-child(odd) {
+  border-right: 1px solid black;
+}
+#formula-letter .center .step .content {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  flex-grow: 1;
+  font-family: "Necto Mono";
+}
+
+#formula-letter .center .step .content .qrcode {
+  width: max-content;
+  margin-right: 8px;
+  margin-left: 4px;
+}
+#formula-letter .center .step .content .explanation {
+  font-family: "Necto Mono";
+  font-size: 16px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-right: 4px;
+}
+#formula-letter .step._two .name-qrcode {
+  margin-top: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+#formula-letter .step._two .name-qrcode .active-name {
+  padding-left: 8px;
+  font-size: 15px;
+}
+#formula-letter .step._two .description {
+  padding: 8px;
+  font-size: 14px;
+  font-size: 13px;
+  text-transform: capitalize;
+}
+#formula-letter .footer-note {
+  padding: 10px;
+  font-family: "Bradford LL";
+  font-size: 16px;
+  font-style: italic;
+  width: 100%;
+}

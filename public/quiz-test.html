@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/frontend_css/style.css?v=1.39" />
+    <link rel="stylesheet" href="/frontend_css/mobile_styles.css?v=1.39" />
+
+    <title>Quiz</title>
+</head>
+
+<body>
+    <section id="page1">
+        <div class="container">
+            <div class="row firstRow">
+                <h1>Create Yours</h1>
+                <h5><span class="dash"></span>TEST SKIN CARE QUIZ</h5>
+            </div>
+            <div class="row secondRow">
+                <div class="columns">
+                    <h3 class="heading">
+                        Let’s start our journey
+                        <span class="underlineSpan">just for you</span>.
+                    </h3>
+                    <p class="para">
+                        We are experts on skin and skincare actives..
+                    </p>
+                    <button id="beginButton" class="beginButton">LET'S BEGIN!</button>
+                </div>
+                <div class="main-image-container">
+                    <img onerror="handleImageMissing(this)" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="page2">
+        <div class="container">
+            <div class="row">
+                <!-- dynamic data here -->
+            </div>
+        </div>
+    </section>
+
+    <section id="page3">
+        <div class="container">
+            <div class="row headerRow">
+                <div id="prevBtn" class="prevBtn nav-item left" onclick="nextQuestion(true)">
+                    <span id="arrowTopLeft" class="arrowTopLeft control-arrows"><img
+                            src="/image/left-arrow.png" /></span>
+                </div>
+                <div id="identity" class="nav-item bordered">
+                    <div class="createdByDiv">
+                        <!-- Dynamic data -->
+                    </div>
+                </div>
+                <div id="nextBtn" class="nextBtn nextBtnTop nav-item right" onclick="nextQuestion()">
+                    <span id="arrowTopRight" class="arrowTopRight control-arrows"><img
+                            src="/image/right-arrow.png" /></span>
+                </div>
+            </div>
+            <div class="row questionRow mtb" id="questionRow">
+                <h1>
+                    <!-- dynamic data here -->
+                </h1>
+            </div>
+            <div class="row noteRow" id="noteRow">
+                <div class="noteTitle">
+                    <h4>
+                        <!-- dynamic data here -->
+                    </h4>
+                </div>
+                <div class="noteDesc">
+                    <p>
+                        <!-- dynamic data here -->
+                    </p>
+                </div>
+            </div>
+
+            <div class="row answerRow typeText" id="typeText" data-type="1">
+                <div class="answerInner typeText">
+                    <input type="text" />
+                    <div class="arrowAnswerBtn nextBtn right" onclick="nextQuestion()">
+                        <span class="arrowAnswer control-arrows"><img src="/image/right-arrow.png" /></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row answerRow typeNum" id="typeNum" data-type="2">
+                <div class="answerInner typeNum">
+                    <input type="number" maxlength="4" minlength="4" />
+                    <div class="arrowAnswerBtn nextBtn" onclick="nextQuestion()">
+                        <span class="arrowAnswer control-arrows"><img src="/image/right-arrow.png" /></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row answerRow typeMcq" id="typeMcq" data-type="4">
+                <div class="answerInner">
+                    <!-- dynamic data -->
+                </div>
+            </div>
+
+            <div class="row answerRow typeMcqi" id="typeMcqi" data-type="5">
+                <div class="answerInner"></div>
+            </div>
+
+            <div id="typeSlide" class="row answerRow typeSlide" data-type="6">
+                <div class="answerInner">
+                    <div class="imgDiv">
+                        <!-- dynamic data -->
+                    </div>
+                    <div class="sliderDiv">
+                        <div class="slidecontainer">
+                            <!-- value="1" -->
+                            <input type="range" min="0" max="100" class="slider" id="myRange" step="any" />
+                        </div>
+                        <div class="sliderRanges">
+                            <!-- dynamic data -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row answerRow typeSelection" id="typeSelection" data-type="7">
+                <div class="answerInner">
+                    <!-- dynamic data -->
+                </div>
+            </div>
+
+            <div class="row answerRow typeGeo" id="typeGeo" data-type="8">
+                <div class="answerInner">
+                    <input id="city" type="search" autocomplete="off" />
+                    <input id="city_id" hidden />
+                    <div id="result"></div>
+                    <div class="arrowAnswerBtn nextBtn right" onclick="nextQuestion()">
+                        <span class="arrowAnswer control-arrows"><img src="/image/right-arrow.png" /></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="page4">
+        <div class="container">
+            <div class="row headerRow">
+                <div id="prevBtn" class="prevBtn nav-item left" onclick="nextQuestion(true,true)">
+                    <span id="arrowTopLeft" class="arrowTopLeft control-arrows"><img
+                            src="/image/left-arrow.png" /></span>
+                </div>
+                <div class="nav-item bordered">
+                    <div class="createdByDiv">
+                        <!-- Dynamic data -->
+                    </div>
+                </div>
+                <div id="nextBtn" class="nextBtn nextBtnTop nav-item right" onclick="closeResponse()">
+                    <span id="arrowTopRight" class="arrowTopRight control-arrows"><img
+                            src="/image/right-arrow.png" /></span>
+                </div>
+            </div>
+            <div class="row customImgRow">
+                <div class="imgRowInner">
+                    <img src="/frontend_images/JarWithName/Jar.png" class="jarImage" alt="" />
+                    <p class="createdByName">
+                        <!-- Dynamic data -->
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="page5">
+        <div class="container center-everything">
+            <div class="row headerRow">
+                <div id="prevBtn" class="prevBtn nav-item left" onclick="nextQuestion(true,true)">
+                    <span id="arrowTopLeft" class="arrowTopLeft control-arrows"><img
+                            src="/image/left-arrow.png" /></span>
+                </div>
+                <div id="identity" class="nav-item bordered">
+                    <div class="createdByDiv">
+                        <!-- Dynamic data -->
+                    </div>
+                </div>
+                <div id="nextBtn" class="nextBtn nextBtnTop nav-item right" onclick="closeResponse()">
+                    <span id="arrowTopRight" class="arrowTopRight control-arrows"><img
+                            src="/image/right-arrow.png" /></span>
+                </div>
+            </div>
+            <div class="row responseRow">
+                <div class="responseInner">
+                    <div class="responseHead">
+                        <!-- dynamic data here -->
+                    </div>
+                    <div class="responseBody">
+                        <!-- dynamic data here -->
+                    </div>
+                </div>
+            </div>
+            <div id="weatherApi" data-type="8">
+                <div class="header">Environmental Profile</div>
+                <div class="info">
+                    <div class="item" id="humidity">
+                        <span class="info-header">Humidity:</span>
+                        <span class="info-value"></span>
+                    </div>
+                    <div class="item" id="temp">
+                        <span class="info-header">Temperature:</span>
+                        <span class="info-value"></span>
+                    </div>
+                    <div class="item" id="sun">
+                        <span class="info-header">Sun:</span>
+                        <span class="info-value"></span>
+                    </div>
+                    <div class="item" id="pollution">
+                        <span class="info-header">Pollution:</span>
+                        <span class="info-value"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="page6">
+        <div class="container">
+            <div class="row finalRow">
+                <div class="imgDiv">
+                    <img src="/frontend_images/FinalScreenAnimation/final.gif" alt="image missing" />
+                </div>
+                <div class="finalDesc">
+                    <h3>Preparing your custom formula...</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="page7">
+        <div class="container mto">
+            <div class="row headerRow">
+                <div id="identity" class="nav-item bordered">
+                    <div class="finalProfileDiv">Final: Skin Profile</div>
+                </div>
+            </div>
+            <div class="row messageRow">
+                <div class="messageInner">
+                    <div class="nameDiv">
+                        <h5>
+                            <!-- dynamic data -->
+                        </h5>
+                    </div>
+                    <div class="messageDiv">
+                        <h3>Your Skin Profile is Complete!</h3>
+                    </div>
+                    <div class="paraDiv">
+                        <p>
+                            Based on what you’ve shared, your skin is pretty nicely balanced. We’ll look to reduce your
+                            pores, protecting you from pollution and sealing out toxins. We’ll also target your
+                            blackheads and tone out your skin for a nice, even look.
+                        </p>
+                    </div>
+                    <div class="buttonDiv">
+                        <button class="button" onclick="addToCart()">
+                            YOUR CUSTOM FORMULA <span id="arrowCustom" class="arrowCustom control-arrows"><img
+                                    src="/image/right-arrow-white.png" /></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div id="profile-result-container"></div>
+            <div class="row aboutRow">
+                <div class="aboutInner">
+                    <div class="aboutDiv">
+                        <h3>About these results</h3>
+                    </div>
+                    <div class="paraDiv">
+                        <p>These results tell us exactly how much support you need in which areas - Your custom forumlas
+                            will be tailored to these measurements.</p>
+                    </div>
+                    <div class="buttonDiv">
+                        <button class="button" onclick="addToCart()">
+                            YOUR CUSTOM FORMULA <span id="arrowCustom" class="arrowCustom control-arrows"><img
+                                    src="/image/right-arrow-white.png" /></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="progressBarSection">
+        <div class="container">
+            <div class="row progressBar">
+                <div id="myBar"></div>
+                <div class="progressColumnsDiv">
+                    <!-- dynamic data here -->
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="lds-ring">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    <script src="/frontend_js/jquery.min.js"></script>
+    <script src="/frontend_js/jquery-2.1.3.js"></script>
+    <script src="/frontend_js/jquery-ui.js"></script>
+    <script src="/frontend_js/quiz-test.js"></script>
+</body>
+
+</html>

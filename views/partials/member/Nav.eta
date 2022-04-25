@@ -1,0 +1,17 @@
+<!-- Sidebar  -->
+<nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>manaknight</h3>
+  </div>
+
+  <ul class="list-unstyled components">
+    <li><a href="/member/dashboard" class="menu-item <%= it._base_url === '/member/dashboard' ? 'menu-active':''%>">Dashboard</a></li>
+    <li><a href="/member/profile" class="menu-item <%= it._base_url === '/member/profile' ? 'menu-active':''%>">Profile</a></li>
+    <li><a href="/member/logout" class="menu-item <%= it._base_url === '/member/logout' ? 'menu-active':''%>">Logout</a></li>
+  </ul>
+
+  <div class="ml-3 d-none">
+    <span class="copyright">Copyright © 2021 manaknight. All rights reserved.</span>
+    <span class="copyright">Powered By <a href="https://manaknight.com" target="__blank">manaknight.</a></span>
+  </div>
+</nav>

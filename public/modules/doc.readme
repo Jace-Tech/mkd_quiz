@@ -1,0 +1,31 @@
+Upload example
+<button class="mkd-uppload-image-button btn btn-primary">Change picture</button>
+
+Signature example
+<div class="signature-wrapper">
+  <canvas id="signature-pad" class="signature-pad" width=400 height=200></canvas>
+</div>
+<button id="clear">Clear</button>
+<button id="save-png">Save as PNG</button>
+
+Suneditor example
+<textarea id="mkd-suneditor"></textarea>
+
+QRCode scanner example
+<div id="qr-container">
+   <a id="btn-scan-qr">
+   <i class="fas fa-qrcode"></i>
+   <a/>
+   <div id="qr-canvas-container">
+      <canvas hidden="" id="qr-canvas"></canvas>
+      <button type="button" class="btn btn-primary btn-sm btn-block" id="qr-canvas-close-btn" hidden="">Close scanner</button>
+   </div>
+   <div id="qr-result" class="alert alert-success" hidden="">
+      <span id="outputData"></span>
+   </div>
+</div>
+
+Barcode example
+    <section id="container" class="container">
+      <div id="interactive" class="viewport"></div>
+    </section>

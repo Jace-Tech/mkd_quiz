@@ -1,0 +1,122 @@
+
+<% if(it.layout_clean_mode) {%>
+<% layout("../layouts/admin/Clean") %>
+<% } else {%>
+<% layout("../layouts/admin/Main") %>
+<%}%>
+
+
+<%~ includeFile("../partials/admin/Breadcrumb", it)%>
+
+<div class="tab-content mx-4 my-4">
+  <div class="row">
+      <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+      <%~ includeFile("../partials/admin/GlobalResponse.eta", it) %>
+          <div class="card" style='border-bottom:1px solid #ccc;'>
+              <div class="card-body">
+                <h4 class="primaryHeading2 text-md-left">
+                  <%= it.heading %>
+                </h4>
+                <table class="table table-striped">
+                  
+                      <tr>
+                        <th>ID:</th>
+                        <td>
+                          <%= it.answer["id"] || "N/A" %>
+                        </td>
+                      </tr>
+                  
+
+                      <tr>
+                        <th>Question ID:</th>
+                        <td>
+                          <%= it.answer["question_id"] || "N/A" %>
+                        </td>
+                      </tr>
+                  
+
+                      <tr>
+                        <th>Question:</th>
+                        <td>
+                          <%= it.answer.question?.question || "N/A" %>
+                        </td>
+                      </tr>
+                      
+
+                      <tr>
+                        <th>Answer:</th>
+                        <td>
+                          <%= it.answer["answer"] || "N/A" %>
+                        </td>
+                      </tr>
+                  
+
+                      <tr>
+                        <th>Answer value:</th>
+                        <td>
+                          <%= it.answer["answer_value"] || "N/A" %>
+                        </td>
+                      </tr>
+                      <tr>
+                        <th>Order:</th>
+                        <td>
+                          <%= it.answer["order"] || "N/A" %>
+                        </td>
+                      </tr>
+                  
+
+                      <tr>
+                        <th>Explaination:</th>
+                        <td>
+                          <%= it.answer["explaination"]|| "N/A" %>
+                        </td>
+                      </tr>
+                  
+
+                      <tr>
+                        <th>Image:</th>
+                        <td>
+                        <% if(it.answer.image){%>
+                        <img src="<%= it.answer.image.url %>" style="width:300px; height:auto; max-height:400px; object-fit: contain; border-radius:4px;">  
+                        <% }else{%>
+                        N/A
+                        <% }%>
+                        </td>
+                      </tr>
+                  
+
+                      <tr>
+                        <th>Response header:</th>
+                        <td>
+                          <%= it.answer["response_header"] || "N/A"  %>
+                        </td>
+                      </tr>
+                  
+
+                      <tr>
+                        <th>Response body:</th>
+                        <td>
+                          <%= it.answer["response_body"] || "N/A"  %>
+                        </td>
+                      </tr>
+                  
+
+                      <tr>
+                        <th>Black listed actives:</th>
+                        <td>
+                          <% if(it.answer["black_list_actives"]) { %>
+                            <% JSON.parse(it.answer["black_list_actives"]).forEach(active => { %>
+                            <%= active %> </br>
+                            <% }) %>
+                          <% } else { %>
+                            N/A
+                          <% }  %>
+                        </td>
+                      </tr>
+                  
+                </table>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

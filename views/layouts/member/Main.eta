@@ -1,0 +1,20 @@
+<%~ includeFile("../../partials/member/Header",it)%>
+    <div class="wrapper container-fluid">
+        <div class="row main-body">
+            <div class="sidebar-container">
+                <% if (!it.hideNav) {%>
+                <%~ includeFile("../../partials/member/Nav", it)%>
+                <%}%>
+            </div>
+        <div id="body">
+        <div class="navigation-row">
+            <button type="button" id="sidebarCollapse" class="btn btn-light">
+                <span>☰</span>
+            </button>
+            </div>
+                <%~ it.body %>
+            </div>
+        </div>
+    </div>
+<% /* Footer */ %>
+<%~ includeFile("../../partials/member/Footer", it)%>
